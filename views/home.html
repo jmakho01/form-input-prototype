@@ -35,7 +35,24 @@
             super();
             // URL to website that has this info: https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#:~:text=or%20JavaScript%20code.-,Implementing%20a%20custom%20element,the%20complete%20set%20of%20requirements.
         }
-                            
+
+        get year() {
+            return this.getAttribute('year')
+        }
+
+        get readOnly() {
+            return this.getAttribute('read-only')
+        }
+
+        connectedCallback() {
+            this.updateCard();
+        }
+
+        updateCard(year = "2025") {
+            if (this.key && translations[lang]) {
+            this.textContent = translations[lang][this.key];
+            }
+        }       
     }
 
     customElements.define('data-card', cardForOthersToUse);
