@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<!-- Card being made here, don't mind the bloat please -->
+<script>
+    const JSONdataTemp = {
+        "2025": {
+            "year": 2025,
+            "read-only": true,
+            "tables": {
+                "Science": {
+                "CSI 240": "Erica Windholm",
+                "CSI 276": "John Invidia"
+                },
+                "Mathematics": {
+                "CSI 242": "Chelsea Green",
+                "CSI 221": "Mark Junglegoer"
+                },
+                "Arts and STEM": {
+                "CSI 270": "Hiking Mike",
+                "CSI 226": "Elise Bossman"
+                }
+            }
+        }
+    }
+    // If you want to make custom elements this is how you do it btw
+    // Start defining the name
+    class cardForOthersToUse extends HTMLElement {
+        constructor() {
+            // This is for defining default states and stuff like that, so default table or whatnot
+            super();
+            // URL to website that has this info: https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#:~:text=or%20JavaScript%20code.-,Implementing%20a%20custom%20element,the%20complete%20set%20of%20requirements.
+        }
+                            
+    }
+
+    customElements.define('data-card', cardForOthersToUse);
+</script>
+<!-- Script end -->
 <body>
     <div id="MainSection">
 
@@ -17,7 +53,6 @@
             </div>
         </div>
         <div id="MainSection">
-
         </div>
         <div id="Footer">
         
