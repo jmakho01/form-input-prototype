@@ -33,3 +33,23 @@
     th {
       background-color: #eee;
     }
+
+    /* Card elements */
+    .YearCard {
+        background-color: rgb(165, 192, 192);
+    }
+    .ReadOnlyCard {
+        background-color: rgb(122, 160, 194);
+    }
+    .SubjectCard {
+        background-color: beige;
+    }
+    .TableContainerCard {
+        background-color: blue;
+    }
+    .CourseCard {
+        background-color: aquamarine;
+    }
+    .TeacherCard {
+        background-color: blueviolet;
+    }
