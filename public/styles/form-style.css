@@ -1,0 +1,35 @@
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      padding: 16px;
+    }
+
+    card-for-others-to-use {
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      background: #f9f9f9;
+      font-family: sans-serif;
+    }
+
+    card-for-others-to-use h2 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td, th {
+      border: 1px solid #ddd;
+      padding: 4px 6px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+    }
