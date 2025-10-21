@@ -19,6 +19,12 @@
       margin-top: 0;
     }
 
+    .Header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -52,4 +58,17 @@
     }
     .TeacherCard {
         background-color: blueviolet;
+    }
+    img {
+        width: 20px;
+        height: 20px;
+        align-self: center;
+    }
+    .LeftSideBar {
+        display: flex;
+        gap: 5px;
+    }
+
+    .LeftSideBar > * {
+        color: rgb(27, 87, 27);
     }

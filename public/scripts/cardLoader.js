@@ -80,6 +80,7 @@
                 </tr>
               `).join('')}
             </table>
+            <input type="text" name=""/>
           `).join('')}
         `;
         // <div>
