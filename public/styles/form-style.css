@@ -72,3 +72,13 @@
     .LeftSideBar > * {
         color: rgb(27, 87, 27);
     }
+
+    #shadow-root {
+        background-color: aqua;
+    }
+
+    .Buttons {
+        width: 100px;
+        height: 40px;
+        color: red;
+    }
