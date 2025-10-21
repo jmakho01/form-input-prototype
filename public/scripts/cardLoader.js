@@ -72,11 +72,11 @@
           <p class="ReadOnlyCard"><strong>Read-only:</strong> ${readOnly}</p>
           ${Object.entries(tables).map(([subject, courses]) => `
             <h3 class="SubjectCard">${subject}</h3>
-            <table>
+            <table class="TableContainerCard">
               ${Object.entries(courses).map(([course, teacher]) => `
                 <tr>
-                  <td>${course}</td>
-                  <td>${teacher}</td>
+                  <td class="CourseCard">${course}</td>
+                  <td class="TeacherCard">${teacher}</td>
                 </tr>
               `).join('')}
             </table>
