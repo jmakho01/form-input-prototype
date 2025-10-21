@@ -83,14 +83,15 @@ class cardForOthersToUse extends HTMLElement {
   updateCard() {
     if (!this._data) return;
     const { year, "read-only": readOnly, tables } = this._data;
-
+    /*
     if(editing === "true") {
       const wrapper = document.createElement('form')
       wrapper.setAttribute("method=\"post\"")
       wrapper.setAttribute("action=\"/submit-order\"")
-    } else {
+    } */
+   /*else {*/
     const wrapper = document.createElement('div');
-    }
+    //}
     // Do not add the CSSStyleSheet object directly as a class
     // Styles are applied via adoptedStyleSheets on the shadow root
     // newElement.classList.add(sheet); <-- This is wrong
