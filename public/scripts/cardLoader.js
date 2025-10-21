@@ -126,3 +126,6 @@ Object.values(JSONdataTemp).forEach(data => {
     card.data = data;
     container.appendChild(card);
 });
+
+
+// To do the thing, make them edit fields when pressed
