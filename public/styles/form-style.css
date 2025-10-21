@@ -19,7 +19,7 @@
       margin-top: 0;
     }
 
-    .Header {
+    .header {
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -64,12 +64,12 @@
         height: 20px;
         align-self: center;
     }
-    .LeftSideBar {
+    .leftSideBar {
         display: flex;
         gap: 5px;
     }
 
-    .LeftSideBar > * {
+    .leftSideBar > * {
         color: rgb(27, 87, 27);
     }
 
