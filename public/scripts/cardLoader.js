@@ -80,8 +80,10 @@
                 </tr>
               `).join('')}
             </table>
-            <input type="text" name=""/>
           `).join('')}
+          <br>
+          <label>Edit</label>
+          <input type="text" name=""/>
         `;
         // <div>
         //  <h2>Year ${year}</h2>
