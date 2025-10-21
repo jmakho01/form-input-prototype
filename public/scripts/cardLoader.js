@@ -68,10 +68,10 @@
 
         const wrapper = document.createElement('div');
         wrapper.innerHTML = `
-          <h2>Year ${year}</h2>
-          <p><strong>Read-only:</strong> ${readOnly}</p>
+          <h2 class="YearCard">Year ${year}</h2>
+          <p class="ReadOnlyCard"><strong>Read-only:</strong> ${readOnly}</p>
           ${Object.entries(tables).map(([subject, courses]) => `
-            <h3>${subject}</h3>
+            <h3 class="SubjectCard">${subject}</h3>
             <table>
               ${Object.entries(courses).map(([course, teacher]) => `
                 <tr>
