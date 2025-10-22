@@ -13,6 +13,9 @@
       padding: 12px;
       background: #f9f9f9;
       font-family: sans-serif;
+      border-style: groove;
+      border-width: 7px;
+      font-family: "Roboto Mono", "Source Code Pro", "Consolas", "Courier New", monospace;
     }
 
     card-for-others-to-use h2 {
@@ -43,21 +46,40 @@
     /* Card elements */
     .YearCard {
         background-color: rgb(165, 192, 192);
+        font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
+        padding: 3px;
+        border-style: groove;
+        border-width: 5px;
+        border-color: rgb(165, 192, 192);
     }
+    /* suggest changing the base code so that it is hidden when not read only, and only shows "read only" when active.
+    In which case the color should be changed to pop a bit so that it draws the attention and immeadeatly alerts*/
     .ReadOnlyCard {
         background-color: rgb(122, 160, 194);
+        padding: 3px;
+        border-style: groove;
+        border-width: 5px;
+        border-color: rgb(122, 160, 194);
     }
     .SubjectCard {
-        background-color: beige;
+        background-color: #f9f9f9;
+        font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
+        /*background-color: rgb(165, 192, 192)*/
     }
     .TableContainerCard {
-        background-color: blue;
-    }
-    .CourseCard {
         background-color: aquamarine;
     }
+    .CourseCard {
+        background-color: lightgreen;
+        border-style: groove;
+        border-width: 3px;
+        border-color: lightgreen;
+    }
     .TeacherCard {
-        background-color: blueviolet;
+        background-color: lightblue;
+        border-style: groove;
+        border-width: 3px;
+        border-color: lightblue;
     }
     img {
         width: 20px;
@@ -73,12 +95,22 @@
         color: rgb(27, 87, 27);
     }
 
+    .rightSideBar {
+        display: none;
+    }
+
     #shadow-root {
         background-color: aqua;
     }
-
-    .Buttons {
+    /*Not sure exactly how this button works, and my attempts to target it with css have failed. 
+    Funcitonal for now but needs work in the future */
+    material-symbols-outlined {
         width: 100px;
         height: 40px;
-        color: red;
+        color: beige;
+        align-self: center;
+    }
+
+    @media screen and (max-width: 480px) { 
+
     }
