@@ -115,7 +115,8 @@ class cardForOthersToUse extends HTMLElement {
       `).join('')}
       <br>
       <div class="button-row">
-        <input style="width: 100px; height: 40px; justify-self: center;" type="button" class="editbtn" value="${this.isEditing && !readOnly ? "Save" : "Edit"}"'>
+        ${!readOnly ? `<input style="width: 100px; height: 40px; justify-self: center;" type="button" class="editbtn" value="${this.isEditing && !readOnly ? "Save" : "Edit"}"'>` : ``}
+        <input style="width: 100px; height: 40px; justify-self: center;" hidden type="button" class="editbtn" value="${this.isEditing && !readOnly ? "Save" : "Edit"}"'>
         ${this.isEditing && !readOnly ? `<input style="width: 100px; height: 40px; justify-self: center;" type="button" class="cancelbtn" value="Cancel">` : ''}
       </div>
     `;
