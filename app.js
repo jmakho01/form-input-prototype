@@ -4,14 +4,13 @@ const JSONdataTemp = {
     //Year
     "2025-2026": {
         //Division
-        "Year": "2025-2026",
         "Fine Arts": {
             // Stipend Unit/Academic Program
+            "Contact: Divison Chair": "Paul Metevier",
+            "Contact: Dean": "Christie Gilliland",
+            "Contact: LOC rep": "Monica Bowen",
+            "PEN Contact": "Liz Peterson",
             "Music" : {
-                "Contact: Divison Chair": "Paul Metevier",
-                "Contact: Dean": "Christie Gilliland",
-                "Contact: LOC rep": "Monica Bowen",
-                "PEN Contact": "Liz Peterson",
                 "Payee(s)": {
                     "Sam": 333.00,
                     "Kelly": 333.00,
@@ -53,24 +52,24 @@ const JSONdataTemp = {
          
     },
     // Old table
-    "2022": {
-      "year": 2022,
-      "read-only": true,
-      "tables": {
-        "Science": {
-          "CSI 230": "Samuel Johnson",
-          "CSI 220": "Irridium Lovely"
-        },
-        "Mathematics": {
-          "MIT 210": "Chelsea Green",
-          "MAT 320": "Mark Johnson"
-        },
-        "Arts and STEM": {
-          "ART 250": "Artistic Mike",
-          "CHS 226": "Sally Mace"
-        }
-      }
-    }
+    // "2022": {
+    //   "year": 2022,
+    //   "read-only": true,
+    //   "tables": {
+    //     "Science": {
+    //       "CSI 230": "Samuel Johnson",
+    //       "CSI 220": "Irridium Lovely"
+    //     },
+    //     "Mathematics": {
+    //       "MIT 210": "Chelsea Green",
+    //       "MAT 320": "Mark Johnson"
+    //     },
+    //     "Arts and STEM": {
+    //       "ART 250": "Artistic Mike",
+    //       "CHS 226": "Sally Mace"
+    //     }
+    //   }
+    // }
 };
 
 const app = express();
