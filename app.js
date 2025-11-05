@@ -58,9 +58,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/table', (req, res) => {
-    res.render(`table.ejs`)
-})
-
+    res.render(`table`, { JSONdataTemp });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
