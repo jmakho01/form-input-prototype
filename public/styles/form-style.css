@@ -24,7 +24,9 @@
 
     .header {
         display: flex;
-        justify-content: space-around;
+        background-color: green;
+        color: white;
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -89,14 +91,19 @@
     .leftSideBar {
         display: flex;
         gap: 5px;
-    }
-
-    .leftSideBar > * {
-        color: rgb(27, 87, 27);
+        padding: 20px;
     }
 
     .rightSideBar {
-        display: none;
+        padding: 20px;
+    }
+    .rightSideBar a {
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+    }
+    .rightSideBar a:hover {
+        text-decoration: underline;
     }
 
     #shadow-root {
