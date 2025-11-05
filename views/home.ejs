@@ -33,6 +33,28 @@
                             <p>LOC Rep: <%= info.LOCRep %></p>
                             <p>PEN Contact: <%= info.PENContact %></p>
                         </div>
+                        <h2>Summary</h2>
+                        <% if (info.Summary) { %>
+                            <div class="summary-section">
+                              <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
+                                <div class="subject-card">
+                                  <h2><%= subject %></h2>
+                                  <p><strong>Has Been Paid:</strong> <%= details.HasBeenPaid %></p>
+                                  <p><strong>Report Submitted:</strong> <%= details.ReportSubmitted %></p>
+                                  <p><strong>Notes:</strong> <%= details.Notes %></p>
+                                  
+                                  <% if (details.Payees) { %>
+                                    <h2>Payees:</h2>
+                                    <div id="Payee Holder">
+                                        <% Object.entries(details.Payees).forEach(([name, amount]) => { %>
+                                            <p><%= name %> | <%= amount.toFixed(2) %></p>
+                                        <% }) %>
+                                    </div>
+                                  <% } %>
+                                </div>
+                              <% }) %>
+                            </div>
+                          <% } %>
                     <%})%>
                 </div>
                 <%})%>
