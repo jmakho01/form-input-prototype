@@ -1,19 +1,5 @@
 import express from 'express';
 
-const app = express();
-
-const PORT = 3010;
-
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-    res.render(`home.ejs`);
-});
-
-app.get('/table', (req, res) => {
-    res.render(`table.ejs`)
-})
-
 const JSONdataTemp = {
     "2025": {
       "year": 2025,
@@ -51,7 +37,24 @@ const JSONdataTemp = {
         }
       }
     }
-  };
+};
+
+const app = express();
+
+const PORT = 3010;
+
+app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.render(`home`,  { Data : JSONdataTemp });
+});
+
+app.get('/table', (req, res) => {
+    res.render(`table.ejs`)
+})
+
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
