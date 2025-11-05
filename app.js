@@ -6,7 +6,7 @@ const JSONdataTemp = {
         //Division
         "Fine Arts": {
             // Stipend Unit/Academic Program
-            "DivisonChair": "Paul Metevier",
+            "DivisionChair": "Paul Metevier",
             "Dean": "Christie Gilliland",
             "LOCRep": "Monica Bowen",
             "PENContact": "Liz Peterson",
