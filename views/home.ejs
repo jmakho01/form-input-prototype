@@ -33,7 +33,6 @@
                             <p>LOC Rep: <%= info.LOCRep %></p>
                             <p>PEN Contact: <%= info.PENContact %></p>
                         </div>
-                        <h3>Summary</h3>
                         <% if (info.Summary) { %>
                             <div class="summary-section">
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
