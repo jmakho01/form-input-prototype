@@ -24,10 +24,14 @@
 
     .header {
         display: flex;
-        background-color: green;
-        color: white;
         justify-content: space-between;
         align-items: center;
+        background-color: #0f5132;
+        color: white;
+        padding: 15px 40px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        border-bottom: 4px solid #198754;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     table {
@@ -98,12 +102,19 @@
         padding: 20px;
     }
     .rightSideBar a {
-        color: white;
-        font-family: 'Poppins', sans-serif;
         text-decoration: none;
+        background-color: white;
+        color: #0f5132;
+        border: 2px solid white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 500;
     }
     .rightSideBar a:hover {
-        text-decoration: underline;
+        background-color: transparent;
+        color: white;
+        border-color: white;
+        cursor: pointer;
     }
 
     #shadow-root {
