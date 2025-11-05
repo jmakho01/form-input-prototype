@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.render(`home.ejs`);
 });
 
+app.get('/table', (req, res) => {
+    res.render(`table.ejs`
+    )
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
