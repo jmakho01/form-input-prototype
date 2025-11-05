@@ -6,50 +6,23 @@ const JSONdataTemp = {
         //Division
         "Fine Arts": {
             // Stipend Unit/Academic Program
-            "Contact: Divison Chair": "Paul Metevier",
-            "Contact: Dean": "Christie Gilliland",
-            "Contact: LOC rep": "Monica Bowen",
-            "PEN Contact": "Liz Peterson",
-            "Music" : {
-                "Payee(s)": {
-                    "Sam": 333.00,
-                    "Kelly": 333.00,
-                    "Ruth": 333.00
+            "DivisonChair": "Paul Metevier",
+            "Dean": "Christie Gilliland",
+            "LOCRep": "Monica Bowen",
+            "PENContact": "Liz Peterson",
+            "Summary": { 
+                "Music" : {
+                    "Payees": {
+                        "Sam": 333.00,
+                        "Kelly": 333.00,
+                        "Ruth": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2025",
+                    "ReportSubmitted": "5/20/2025",
+                    "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
                 },
-                "Has been paid (PEN form initiated)": "Emails sent to Building Admins on 5/2/2025",
-                "Report Submitted": "5/20/2025",
-                "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
-            },
+            }
         },
-        "Humanities": {
-            // Stipend Unit/Academic Program
-            "Communication Studies" : {
-                "Contact: Divison Chair": "Katie Cunnion",
-                "Contact: Dean": "Jamie Fitzgerald",
-                "Contact: LOC rep": "Lisa Luengo",
-                "PEN Contact": "Liz Peterson",
-                "Payee(s)": {
-                },
-                "Has been paid (PEN form initiated)": "Emails sent to Building Admins on 5/2/2025",
-                "Report Submitted": "",
-                "Notes": "No"
-            },
-        },
-        "Social Science": {
-            // Stipend Unit/Academic Program
-            "Anthropology" : {
-                "Contact: Divison Chair": "Mark Thomason",
-                "Contact: Dean": "Jamie Fitzgerald",
-                "Contact: LOC rep": "Lisa Luengo",
-                "PEN Contact": "Liz Peterson",
-                "Payee(s)": {
-                },
-                "Has been paid (PEN form initiated)": "Emails sent to Building Admins on 5/2/2025",
-                "Report Submitted": "",
-                "Notes": "No"
-            },
-        },
-         
     },
     // Old table
     // "2022": {
