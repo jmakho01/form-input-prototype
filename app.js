@@ -1,42 +1,48 @@
 import express from 'express';
 
 const JSONdataTemp = {
-    "2025": {
-      "year": 2025,
-      "read-only": false,
-      "tables": {
-        "Science": {
-          "CSI 240": "Erica Windholm",
-          "CSI 276": "John Invidia"
+    //Year
+    "2025-2026": {
+        //Division
+        "Fine Arts": {
+            // Stipend Unit/Academic Program
+            "DivisonChair": "Paul Metevier",
+            "Dean": "Christie Gilliland",
+            "LOCRep": "Monica Bowen",
+            "PENContact": "Liz Peterson",
+            "Summary": { 
+                "Music" : {
+                    "Payees": {
+                        "Sam": 333.00,
+                        "Kelly": 333.00,
+                        "Ruth": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2025",
+                    "ReportSubmitted": "5/20/2025",
+                    "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
+                },
+            }
         },
-        "Mathematics": {
-          "CSI 242": "Chelsea Green",
-          "CSI 221": "Mark Junglegoer"
-        },
-        "Arts and STEM": {
-          "CSI 270": "Hiking Mike",
-          "CSI 226": "Elise Bossman"
-        }
-      }
     },
-    "2022": {
-      "year": 2022,
-      "read-only": true,
-      "tables": {
-        "Science": {
-          "CSI 230": "Samuel Johnson",
-          "CSI 220": "Irridium Lovely"
-        },
-        "Mathematics": {
-          "MIT 210": "Chelsea Green",
-          "MAT 320": "Mark Johnson"
-        },
-        "Arts and STEM": {
-          "ART 250": "Artistic Mike",
-          "CHS 226": "Sally Mace"
-        }
-      }
-    }
+    // Old table
+    // "2022": {
+    //   "year": 2022,
+    //   "read-only": true,
+    //   "tables": {
+    //     "Science": {
+    //       "CSI 230": "Samuel Johnson",
+    //       "CSI 220": "Irridium Lovely"
+    //     },
+    //     "Mathematics": {
+    //       "MIT 210": "Chelsea Green",
+    //       "MAT 320": "Mark Johnson"
+    //     },
+    //     "Arts and STEM": {
+    //       "ART 250": "Artistic Mike",
+    //       "CHS 226": "Sally Mace"
+    //     }
+    //   }
+    // }
 };
 
 const app = express();
