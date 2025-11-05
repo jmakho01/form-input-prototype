@@ -51,7 +51,7 @@
 
     /* Card elements */
     .YearCard {
-        background-color: rgb(165, 192, 192);
+        background-color: white;
         font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
         padding: 3px;
         border-style: groove;
@@ -72,16 +72,23 @@
         font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
         /*background-color: rgb(165, 192, 192)*/
     }
-    .TableContainerCard {
-        background-color: aquamarine;
+    .singlecard {
+        background-color: rgb(165, 192, 192);
+        font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
+        padding: 3px;
+        border-style: groove;
+        border-width: 5px;
+        border-color: rgb(165, 192, 192);
     }
-    .CourseCard {
+    .division-card {
+        padding: 5px;
         background-color: lightgreen;
         border-style: groove;
         border-width: 3px;
         border-color: lightgreen;
     }
-    .TeacherCard {
+    .subject-card {
+        padding: 5px;
         background-color: lightblue;
         border-style: groove;
         border-width: 3px;
@@ -115,10 +122,6 @@
         color: white;
         border-color: white;
         cursor: pointer;
-    }
-
-    #shadow-root {
-        background-color: aqua;
     }
 
     .errors {

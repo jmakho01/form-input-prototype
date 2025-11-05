@@ -23,17 +23,16 @@
     <div class = "mainSection">
             <div class="card-grid" id="cardContainer">
                 <% Object.entries(Data).forEach(([year, divisions]) => { %>
-                <div>
+                <div class = "singlecard">
                     <h2 class="YearCard"><%= year %></h2>
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
                         <div class="division-card">
-                            <h3 class="Divison-Card"><%= division %></h3>
+                            <h3 class="divison-card"><%= division %></h3>
                             <p>Division Chair: <%= info.DivisionChair %></p>
                             <p>Dean: <%= info.Dean %></p>
                             <p>LOC Rep: <%= info.LOCRep %></p>
                             <p>PEN Contact: <%= info.PENContact %></p>
                         </div>
-                        <h2>Summary</h2>
                         <% if (info.Summary) { %>
                             <div class="summary-section">
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
