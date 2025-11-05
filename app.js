@@ -1,24 +1,58 @@
 import express from 'express';
 
 const JSONdataTemp = {
-    "2025": {
-      "year": 2025,
-      "read-only": false,
-      "tables": {
-        "Science": {
-          "CSI 240": "Erica Windholm",
-          "CSI 276": "John Invidia"
+    //Year
+    "2025-2026": {
+        //Division
+        "Year": "2025-2026",
+        "Fine Arts": {
+            // Stipend Unit/Academic Program
+            "Music" : {
+                "Contact: Divison Chair": "Paul Metevier",
+                "Contact: Dean": "Christie Gilliland",
+                "Contact: LOC rep": "Monica Bowen",
+                "PEN Contact": "Liz Peterson",
+                "Payee(s)": {
+                    "Sam": 333.00,
+                    "Kelly": 333.00,
+                    "Ruth": 333.00
+                },
+                "Has been paid (PEN form initiated)": "Emails sent to Building Admins on 5/2/2025",
+                "Report Submitted": "5/20/2025",
+                "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
+            },
         },
-        "Mathematics": {
-          "CSI 242": "Chelsea Green",
-          "CSI 221": "Mark Junglegoer"
+        "Humanities": {
+            // Stipend Unit/Academic Program
+            "Communication Studies" : {
+                "Contact: Divison Chair": "Katie Cunnion",
+                "Contact: Dean": "Jamie Fitzgerald",
+                "Contact: LOC rep": "Lisa Luengo",
+                "PEN Contact": "Liz Peterson",
+                "Payee(s)": {
+                },
+                "Has been paid (PEN form initiated)": "Emails sent to Building Admins on 5/2/2025",
+                "Report Submitted": "",
+                "Notes": "No"
+            },
         },
-        "Arts and STEM": {
-          "CSI 270": "Hiking Mike",
-          "CSI 226": "Elise Bossman"
-        }
-      }
+        "Social Science": {
+            // Stipend Unit/Academic Program
+            "Anthropology" : {
+                "Contact: Divison Chair": "Mark Thomason",
+                "Contact: Dean": "Jamie Fitzgerald",
+                "Contact: LOC rep": "Lisa Luengo",
+                "PEN Contact": "Liz Peterson",
+                "Payee(s)": {
+                },
+                "Has been paid (PEN form initiated)": "Emails sent to Building Admins on 5/2/2025",
+                "Report Submitted": "",
+                "Notes": "No"
+            },
+        },
+         
     },
+    // Old table
     "2022": {
       "year": 2022,
       "read-only": true,
