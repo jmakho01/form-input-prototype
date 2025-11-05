@@ -7,7 +7,7 @@ const PORT = 3010;
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render(`home.ejs`);
 });
 
 app.listen(PORT, () => {
