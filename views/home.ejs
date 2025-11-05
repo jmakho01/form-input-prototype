@@ -21,30 +21,6 @@
     </div>
 
     <div class = "mainSection">
-        <div class="card-grid" id="cardContainer">
-            <h2 class="YearCard">Year <%=${year}%></h2>
-            <p class="ReadOnlyCard"><strong>Read-only:</strong> ${readOnly}</p>
-            ${Object.entries(tables).map(([subject, courses]) => `
-              <h3 class="SubjectCard">${subject}</h3>
-              <table class="TableContainerCard">
-                <tbody>
-                  ${Object.entries(courses).map(([course, teacher]) => `
-                    <tr>
-                      <td class="CourseCard">${course}</td>
-                      <td class="TeacherCard">${this.isEditing && !readOnly ? `<input type="text" value="${teacher}" data-subject="${subject}" data-course="${course}">` : teacher }</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            `).join('')}
-            <br>
-            <div class="button-row">
-              ${!readOnly ? `<input style="width: 100px; height: 40px; justify-self: center;" type="button" class="editbtn" value="${this.isEditing && !readOnly ? "Save" : "Edit"}"'>` : ``}
-              <input style="width: 100px; height: 40px; justify-self: center;" hidden type="button" class="editbtn" value="${this.isEditing && !readOnly ? "Save" : "Edit"}"'>
-              ${this.isEditing && !readOnly ? `<input style="width: 100px; height: 40px; justify-self: center;" type="button" class="cancelbtn" value="Cancel">` : ''}
-            </div>
-            
-        </div>
     </div>
     <div class = "footer">
     </div>
