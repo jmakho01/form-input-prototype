@@ -120,6 +120,10 @@
     #shadow-root {
         background-color: aqua;
     }
+
+    .errors {
+        display: none;
+    }
     /*Not sure exactly how this button works, and my attempts to target it with css have failed. 
     Funcitonal for now but needs work in the future */
     material-symbols-outlined {
