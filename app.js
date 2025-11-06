@@ -100,8 +100,8 @@ app.get('/', (req, res) => {
     res.render(`home`,  { Data : JSONdataTemp });
 });
 
-app.get('/table', (req, res) => {
-    res.render(`table`, { rows });
+app.get('/summary', (req, res) => {
+    res.render(`summary`, { rows });
 });
 
 app.listen(PORT, () => {
