@@ -124,7 +124,7 @@
         cursor: pointer;
     }
 
-    .errors {
+    .error-message {
         display: none;
         padding: 5px;
         background-color: lightcoral;
