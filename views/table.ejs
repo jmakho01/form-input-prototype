@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LOC Summary</title>
     <link rel="stylesheet" type="text/css" href="/styles/form-style.css">
     <link rel = "stylesheet" href = "//cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css">
     <script src = "https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src = "//cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
-
 </head>
 <body>
         <div class = "header">
         <div class = "leftSideBar">
-            <h1>INSERT ORGINZATION NAME HERE</h1>
+            <h1>INSERT ORGANIZATION NAME HERE</h1>
         </div>
         <div class="rightSideBar">
             <a href="/" role="button">Division page</a>
@@ -39,19 +38,20 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                    <% rows.forEach(row => { %>
                     <tr>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"] %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Summary.Music %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].DivisionChair %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Dean %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].PENContact %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Summary.Music.Payees %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Summary.Music.Payees %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Summary.Music.HasBeenPaid %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Summary.Music.ReportSubmitted %></td>
-                        <td><%= JSONdataTemp["2025-2026"]["Fine Arts"].Summary.Music.Notes %></td>
+                        <td><%= row.division %></td>
+                        <td><%= row.program %></td>
+                        <td><%= row.chair %></td>
+                        <td><%= row.dean %></td>
+                        <td><%= row.locRep %></td>
+                        <td><%= row.penContact %></td>
+                        <td><%= row.payees %></td>
+                        <td><%= row.paid %></td>
+                        <td><%= row.report %></td>
+                        <td><%= row.notes %></td>
                     </tr>
+                    <% }) %>
                 </tbody>
             </table>
         </header>

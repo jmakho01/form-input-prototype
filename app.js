@@ -23,26 +23,26 @@ const JSONdataTemp = {
                 },
             }
         },
-        // //Division
-        // "Tomato": {
-        //     // Stipend Unit/Academic Program
-        //     "DivisionChair": "Tomato Metevier",
-        //     "Dean": "Tomato Gilliland",
-        //     "LOCRep": "Tomato Bowen",
-        //     "PENContact": "Tomato Peterson",
-        //     "Summary": { 
-        //         "Music" : {
-        //             "Payees": {
-        //                 "Tomato Sam": 333.00,
-        //                 "Tomato Kelly": 333.00,
-        //                 "Arranged Tomato Ruth": 333.00
-        //             },
-        //             "HasBeenPaid": "Emails sent to Building Admins on 5/2/2025",
-        //             "ReportSubmitted": "5/20/2025",
-        //             "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
-        //         },
-        //     }
-        // },
+        //Division
+        "Tomato": {
+            // Stipend Unit/Academic Program
+            "DivisionChair": "Tomato Metevier",
+            "Dean": "Tomato Gilliland",
+            "LOCRep": "Tomato Bowen",
+            "PENContact": "Tomato Peterson",
+            "Summary": { 
+                "Music" : {
+                    "Payees": {
+                        "Tomato Sam": 333.00,
+                        "Tomato Kelly": 333.00,
+                        "Arranged Tomato Ruth": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2025",
+                    "ReportSubmitted": "5/20/2025",
+                    "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
+                },
+            }
+        },
     },
     // Old table
     // "2022": {
@@ -65,6 +65,29 @@ const JSONdataTemp = {
     // }
 };
 
+//Storing JSON object data into seperate array for summary page
+const data = JSONdataTemp["2025-2026"];
+const rows = [];
+
+for (const [divisionName, division] of Object.entries(data)) {
+  for (const [programName, summary] of Object.entries(division.Summary)) {
+    rows.push({
+      division: divisionName,
+      program: programName,
+      chair: division.DivisionChair,
+      dean: division.Dean,
+      locRep: division.LOCRep,
+      penContact: division.PENContact,
+      payees: Object.entries(summary.Payees)
+        .map(([n, v]) => `${n}: $${v}`)
+        .join(", "),
+      paid: summary.HasBeenPaid,
+      report: summary.ReportSubmitted,
+      notes: summary.Notes,
+    });
+  }
+}
+
 const app = express();
 
 const PORT = 3010;
@@ -78,7 +101,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/table', (req, res) => {
-    res.render(`table`, { JSONdataTemp });
+    res.render(`table`, { rows });
 });
 
 app.listen(PORT, () => {
