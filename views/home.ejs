@@ -6,14 +6,14 @@
     <title>LOC Home Page</title>
     <link rel="stylesheet" type="text/css" href="/styles/form-style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit">
-    <script src="/scripts/cardLoader.js" defer></script>
+    <script src="/scripts/locedit.js" defer></script>
 </head>
 <body class = "body">
 <!--Add header to move cards down and create a professional images-->
 <!--Add two dropdown menus hegre to select which division is shown-->
     <div class = "header">
         <div class = "leftSideBar">
-            <h1>INSERT ORGANIZATION NAME HERE</h1>
+            <h1>Learning Outcomes Committee</h1>
         </div>
         <div class="rightSideBar">
             <a href="/summary" role="button">Summary Page</a>
@@ -21,39 +21,53 @@
     </div>
 
     <div class = "mainSection">
-            <div class="card-grid" id="cardContainer">
-                <% Object.entries(Data).forEach(([year, divisions]) => { %>
+        <div class="card-grid" id="cardContainer">
+            <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div class = "singlecard">
                     <h2 class="YearCard"><%= year %></h2>
+                        
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
-                        <div class="division-card">
+                        <div class="division-card" data-division="<%= division %>">
                             <h3 class="divison-card"><%= division %></h3>
-                            <p>Division Chair: <%= info.DivisionChair %></p>
-                            <p>Dean: <%= info.Dean %></p>
-                            <p>LOC Rep: <%= info.LOCRep %></p>
-                            <p>PEN Contact: <%= info.PENContact %></p>
+                            <p>Division Chair: <span class="editable" data-field="DivisionChair"><%= info.DivisionChair %></span></p>
+                            <p>Dean: <span class="editable" data-field="Dean"><%= info.Dean %></span></p>
+                            <p>LOC Rep: <span class="editable" data-field="LOCRep"><%= info.LOCRep %></span></p>
+                            <p>PEN Contact: <span class="editable" data-field="PENContact"><%= info.PENContact %></span></p>
+
+                            <div class="edit-controls">
+                                <button class="edit-btn">Edit</button>
+                                <button class="save-btn" style="display:none;">Save</button>
+                                <button class="cancel-btn" style="display:none;">Cancel</button>
+                            </div>
+                            <div class="error-message"></div>
                         </div>
+
                         <% if (info.Summary) { %>
                             <div class="summary-section">
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
                                 <div class="subject-card">
                                   <h3><%= subject %></h3>
-                                  <p><strong>Has Been Paid:</strong> <%= details.HasBeenPaid %></p>
-                                  <p><strong>Report Submitted:</strong> <%= details.ReportSubmitted %></p>
-                                  <p><strong>Notes:</strong> <%= details.Notes %></p>
+                                  <p><strong>Has Been Paid:</strong> <span class="editable" data-field="HasBeenPaid"><%= details.HasBeenPaid %></span></p>
+                                  <p><strong>Report Submitted:</strong> <span class="editable" data-field="ReportSubmitted"><%= details.ReportSubmitted %></span></p>
+                                  <p><strong>Notes:</strong> <span class="editable" data-field="Notes"><%= details.Notes %></span></p>
                                   
                                   <% if (details.Payees) { %>
                                     <h3>Payees:</h3>
                                     <div id="PayeeHolder">
                                         <% Object.entries(details.Payees).forEach(([name, amount]) => { %>
-                                            <p><%= name %> | <%= amount.toFixed(2) %></p>
+                                            <p class="editable-payee" data-name="<%= name %>"><%= name %> | <%= amount.toFixed(2) %></p>
                                         <% }) %>
                                     </div>
                                   <% } %>
+
+                                    <div class="edit-controls">
+                                        <button class="edit-btn">Edit</button>
+                                        <button class="save-btn" style="display:none;">Save</button>
+                                        <button class="cancel-btn" style="display:none;">Cancel</button>
+                                    </div>
+                                    <div class="error-message"></div>
                                 </div>
-                                <div class="errors">
-                                    <p id = "er-main">Error, please do not leave fields blank</p>
-                                </div>
+
                               <% }) %>
                             </div>
                           <% } %>
