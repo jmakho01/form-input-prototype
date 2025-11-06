@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOC Home Page</title>
     <link rel="stylesheet" type="text/css" href="/styles/form-style.css">
-</head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit">
     <script src="/scripts/cardLoader.js" defer></script>
+</head>
 <body class = "body">
 <!--Add header to move cards down and create a professional images-->
 <!--Add two dropdown menus hegre to select which division is shown-->
@@ -44,7 +44,7 @@
                                   
                                   <% if (details.Payees) { %>
                                     <h3>Payees:</h3>
-                                    <div id="Payee Holder">
+                                    <div id="PayeeHolder">
                                         <% Object.entries(details.Payees).forEach(([name, amount]) => { %>
                                             <p><%= name %> | <%= amount.toFixed(2) %></p>
                                         <% }) %>
