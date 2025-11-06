@@ -126,6 +126,11 @@
 
     .errors {
         display: none;
+        padding: 5px;
+        background-color: lightcoral;
+        border-style: groove;
+        border-width: 3px;
+        border-color: lightcoral;
     }
     /*Not sure exactly how this button works, and my attempts to target it with css have failed. 
     Funcitonal for now but needs work in the future */
