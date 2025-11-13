@@ -103,6 +103,9 @@ app.get('/', (req, res) => {
 app.get('/summary', (req, res) => {
     res.render(`summary`, { rows });
 });
+app.get('/history', (req, res) => {
+    res.render(`history`, { rows });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
