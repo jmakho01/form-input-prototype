@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
           else {
             if (input.className != "editable-payee") {
               valid = valid + " " + input.id; }
-            else if (addedpayee = false) {
+            else if (addedpayee == false) {
               valid = valid + " " + "Payee";
               addedpayee = true;
             }
