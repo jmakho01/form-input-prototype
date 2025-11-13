@@ -1,8 +1,5 @@
 
     .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
-      gap: 16px;
       padding: 16px;
     }
 
@@ -73,9 +70,12 @@
         /*background-color: rgb(165, 192, 192)*/
     }
     .singlecard {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         background-color: rgb(165, 192, 192);
         font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
         padding: 3px;
+        gap: 16px;
         border-style: groove;
         border-width: 5px;
         border-color: rgb(165, 192, 192);
