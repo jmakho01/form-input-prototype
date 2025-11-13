@@ -24,7 +24,7 @@
         <div class="card-grid" id="cardContainer">
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div class = "singlecard">
-                    <h2 class="YearCard"><%= year %></h2>
+                    <!-- <h2 class="YearCard"><%= year %></h2> -->
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
                         <div class="division-card" data-division="<%= division %>">
                             <h3 class="divison-card"><%= division %></h3>
@@ -46,9 +46,9 @@
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
                                 <div class="subject-card">
                                   <h3><%= subject %></h3>
-                                  <p><strong>Has Been Paid:</strong> <span class="editable" data-field="HasBeenPaid"><%= details.HasBeenPaid %></span></p>
-                                  <p><strong>Report Submitted:</strong> <span class="editable" data-field="ReportSubmitted"><%= details.ReportSubmitted %></span></p>
-                                  <p><strong>Notes:</strong> <span class="editable" data-field="Notes"><%= details.Notes %></span></p>
+                                  <p><strong>Has Been Paid:</strong> <span class="editable" data-field="HasBeenPaid" id = "Payment status"><%= details.HasBeenPaid %></span></p>
+                                  <p><strong>Report Submitted:</strong> <span class="editable" data-field="ReportSubmitted" id = "Report status"><%= details.ReportSubmitted %></span></p>
+                                  <p><strong>Notes:</strong> <span class="editable" data-field="Notes" id ="notes"><%= details.Notes %></span></p>
                                   
                                   <% if (details.Payees) { %>
                                     <h3>Payees:</h3>

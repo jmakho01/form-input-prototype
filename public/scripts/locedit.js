@@ -47,22 +47,37 @@ document.addEventListener("DOMContentLoaded", () => {
     // save edits
     saveBtn.addEventListener("click", () => {
       const inputs = card.querySelectorAll(".edit-input");
-      let valid = true;
+      let valid = "valid";
+      let addedpayee = false;
       const updated = {};
 
       // validate inputs
       inputs.forEach(input => {
         if (!input.value.trim()) {
           input.classList.add("error");
-          valid = false;
+          if (valid = "valid") {
+            if (input.className != "editable-payee") {
+              valid = input.id; }
+            else {
+              valid = "Payee";
+            }
+          }
+          else {
+            if (input.className != "editable-payee") {
+              valid = valid + " " + input.id; }
+            else if (addedpayee = false) {
+              valid = valid + " " + "Payee";
+              addedpayee = true;
+            }
+          }
         } else {
           input.classList.remove("error");
           updated[input.name] = input.value.trim();
         }
       });
 
-      if (!valid) {
-        errorBox.textContent = "Please fill in all required fields.";
+      if (valid != "valid") {
+        errorBox.textContent = "Please fill in all required fields. Missing fields " +  valid;
         errorBox.style.display = "block";
         return; // stop save if invalid
       }
