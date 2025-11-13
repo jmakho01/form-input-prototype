@@ -24,7 +24,7 @@
         <div class="card-grid" id="cardContainer">
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div class = "singlecard">
-                    <!--<h2 class="YearCard"><%= year %></h2> -->
+                    <h2 class="YearCard"><%= year %></h2>
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
                         <div class="division-card" data-division="<%= division %>">
                             <h3 class="divison-card"><%= division %></h3>
