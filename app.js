@@ -90,7 +90,7 @@ for (const [divisionName, division] of Object.entries(data)) {
 
 const app = express();
 
-const PORT = 3010;
+const PORT = 3099;
 
 app.set('view engine', 'ejs');
 
@@ -103,6 +103,7 @@ app.get('/', (req, res) => {
 app.get('/summary', (req, res) => {
     res.render(`summary`, { rows });
 });
+
 app.get('/history', (req, res) => {
     res.render(`history`, { rows });
 });
