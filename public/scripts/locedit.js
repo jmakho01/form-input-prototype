@@ -55,16 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
       inputs.forEach(input => {
         if (!input.value.trim()) {
           input.classList.add("error");
-          if (valid = "valid") {
-            if (input.className != "editable-payee") {
-              valid = input.id; }
+          if (valid === "valid") {
+            console.log("Checking input:", input.id, input.value);
+            if (!input.classList.contains("editable-payee")) {
+              valid = input.name; }
             else {
               valid = "Payee";
             }
           }
           else {
-            if (input.className != "editable-payee") {
-              valid = valid + " " + input.id; }
+            console.log("Checking input:", input.id, input.value);
+            if (!input.classList.contains("editable-payee")) {
+              valid = valid + " " + input.name; }
             else if (addedpayee == false) {
               valid = valid + " " + "Payee";
               addedpayee = true;
@@ -76,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      if (valid != "valid") {
-        errorBox.textContent = "Please fill in all required fields. Missing fields " +  valid;
+      if (valid !== "valid") {
+        errorBox.textContent = "Please fill in all required fields. Missing fields: " +  valid;
         errorBox.style.display = "block";
         return; // stop save if invalid
       }
