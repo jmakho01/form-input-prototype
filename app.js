@@ -2,7 +2,7 @@ import express from 'express';
 
 const JSONdataTemp = {
     //Year
-    "2025-2026": {
+    "2024-2025": {
         //Division
         "Fine Arts": {
             // Stipend Unit/Academic Program
@@ -59,7 +59,7 @@ const JSONdataTemp = {
                         "None": 0
                     },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
-                    "ReportSubmitted": "None",
+                    
                     "Notes": "No for this round"
                 },
                 "Political Science" : {
@@ -82,8 +82,61 @@ const JSONdataTemp = {
                 },
             }
         },
+        "English": {
+            "DivisionChair": "Ian Sherman",
+            "Dean": "Jamie Fitzgerald",
+            "LOCRep": "Jake Frye",
+            "PENContact": "Liz Peterson",
+            "Summary": { 
+                "Music" : {
+                    "Payees": {
+                        "Aley Martin": 175.00,
+                        "Claire Salcedo": 175.00,
+                        "Ericka Nelson": 175.00,
+                        "Jake": 475.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2025",
+                    "ReportSubmitted": "Report to be completed in year #2",
+                    "Notes": "Yes! See notes on adjuncts to pay. Will submit report next year 2025-2026"
+                },
+            }
+        },
+        "Science": {
+            "DivisionChair": "Katy Shaw and Danny Najera",
+            "Dean": "Miebeth Bustillo-Booth",
+            "LOCRep": "Nicole Feider",
+            "PENContact": "Heather Lambert",
+            "Summary": { 
+                "Anatomy and Physiology" : {
+                    "Payees": {
+                        "None": 0
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
+                    "Notes": "Initial Invite Sent from Julie 9/26/24. Follow up on 10/21"
+                },
+                "Biology/Environmental Science" : {
+                    "Payees": {
+                        "Leo Studach": 334.00,
+                        "Stephamie Hoffman": 333.00,
+                        "Danny Najera": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "Report coming this summer",
+                    "Notes": "Yes, they are doing a 2-year project with majors level Bio classes"
+                },
+                "Geology/Oceanography" : {
+                    "Payees": {
+                        "None": 0
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
+                    "Notes": "Initial Invite Sent from Julie 9/26/24. Follow up on 10/21 and 11/20"
+                },
+            }
+        },
     },
-    "2026-2027": {
+    "2025-2026": {
         "Science": {
             // Stipend Unit/Academic Program
             "DivisionChair": "David Schienche",
