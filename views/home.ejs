@@ -23,13 +23,13 @@
     <% let yearChosen = ""%>
     <div class = "mainSection">
         <div class="card-grid" id="cardContainer">
-            <select name="yearChoice" id="years">
+            <select name="yearChoice" class = "dropdown" id="years">
                 <option disabled hidden selected>Choose a year</option>
                 <% Object.entries(Data).forEach(([year]) => { %>
                     <option value="<%=year%>"><%=year%></option>
                 <%})%>
             </select>
-            <select value="divChoice" id="divs">
+            <select value="divChoice" class = "dropdown" id="divs">
                 <option selected>All Divisions</option>
                 <% Object.entries(Data).forEach(([year, divisions]) => { %>
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
