@@ -29,6 +29,14 @@
                     <option value="<%=year%>"><%=year%></option>
                 <%})%>
             </select>
+            <select value="divChoice" id="divs">
+                <option selected>All Divisions</option>
+                <% Object.entries(Data).forEach(([year, divisions]) => { %>
+                    <% Object.entries(divisions).forEach(([division, info]) => { %>
+                        <option value="<%=division%>"><%=division%></option>
+                    <%})%>
+                <%})%>
+            </select>
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div id="<%=year%>" class = "singlecard">
                     <!-- <h2 class="YearCard"><%= year %></h2> -->
@@ -84,8 +92,7 @@
         <script>
             const selector = document.getElementById("years");
             const sections = document.querySelectorAll(".singlecard");
-        
-            // Hide all year sections initially
+    
             sections.forEach(sec => sec.style.display = "none");
         
             selector.addEventListener("change", () => {
