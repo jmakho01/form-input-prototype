@@ -59,7 +59,7 @@ const JSONdataTemp = {
                         "None": 0
                     },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
-                    
+                    "ReportSubmitted": "None",
                     "Notes": "No for this round"
                 },
                 "Political Science" : {
