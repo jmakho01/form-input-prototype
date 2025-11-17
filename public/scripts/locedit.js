@@ -164,3 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+module.exports = {
+  inMemoryEdits
+};

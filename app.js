@@ -1,4 +1,5 @@
 import express from 'express';
+const { inMemoryEdits } = require('./locedit');
 
 const JSONdataTemp = {
     //Year
@@ -105,7 +106,7 @@ app.get('/summary', (req, res) => {
 });
 
 app.get('/history', (req, res) => {
-    res.render(`history`, { rows });
+    res.render(`history`, { inMemoryEdits });
 });
 
 app.listen(PORT, () => {
