@@ -39,11 +39,32 @@ const JSONdataTemp = {
                     },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
                     "ReportSubmitted": "5/21/2025",
-                    "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
+                    "Notes": "Yes! Tomato, Tomato, and Arranged all work on this together and divide the money three ways."
                 },
             }
         },
     },
+    "2026-2027": {
+        "Science": {
+            // Stipend Unit/Academic Program
+            "DivisionChair": "David Schienche",
+            "Dean": "Christ Elmity",
+            "LOCRep": "Monica Lonica",
+            "PENContact": "Torrent Stead",
+            "Summary": { 
+                "Geology" : {
+                    "Payees": {
+                        "Mars": 333.00,
+                        "Fred": 333.00,
+                        "Richie": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2026",
+                    "ReportSubmitted": "5/20/2026",
+                    "Notes": "Yes! Mars, Fred, and Richie all work on this together and divide the money three ways."
+                },
+            }
+        },
+    }
     // Old table
     // "2022": {
     //   "year": 2022,
