@@ -199,7 +199,7 @@ app.get('/summary', (req, res) => {
 });
 
 app.get('/history', (req, res) => {
-    res.render(`history`, { rows });
+    res.render(`history`, { editHistory });
 });
 
 app.listen(PORT, () => {

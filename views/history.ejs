@@ -17,7 +17,27 @@
         </div>
         </div>
         <main>
-
+<div class = "main-content">
+        <table id = "order-table" class ="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Timestamp</th>
+                    <th>Context</th>
+                    <th>Identifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% inMemoryEdits.forEach(updated => { %>
+                  <tr>
+                    <td><%= updated.name %></td>
+                    <td><%= updated.timestamp %></td>
+                    <td><%= updated.context %></td>
+                    <td><%= updated.identifier %></td>
+                  </tr>
+                <% }) %>
+            </tbody>
+        </table>
         </main>
 </body>
 </html>
