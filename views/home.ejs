@@ -15,6 +15,7 @@
         <div class = "leftSideBar">
             <h1>Learning Outcomes Committee</h1>
         </div>
+        
         <div class="rightSideBar">
             <a href="/summary" role="button">Summary</a>
             <a href="/history" role="button">History</a>
@@ -33,9 +34,11 @@
                 <option selected>All Divisions</option>
                 <% Object.entries(Data).forEach(([year, divisions]) => { %>
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
-                        <option value="<%=division%>"><%=division%></option>
-                    <%})%>
-                <%})%>
+                        <option hidden value="<%= division %>" data-year="<%= year %>">
+                            <%= division %>
+                        </option>
+                    <% }) %>
+                <% }) %>
             </select>
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div id="<%=year%>" class = "singlecard">
@@ -59,7 +62,7 @@
                         <% if (info.Summary) { %>
                             <div class="summary-section">
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
-                                <div class="subject-card">
+                                <div class="subject-card" data-division="<%= division %>">
                                   <h3><%= subject %></h3>
                                   <p><strong>Has Been Paid:</strong> <span class="editable" name = "Payment status" data-field="HasBeenPaid"><%= details.HasBeenPaid %></span></p>
                                   <p><strong>Report Submitted:</strong> <span class="editable" name = "Report Status" data-field="ReportSubmitted"><%= details.ReportSubmitted %></span></p>
@@ -92,6 +95,7 @@
         <script>
             const selector = document.getElementById("years");
             const sections = document.querySelectorAll(".singlecard");
+            const divSelect = document.getElementById("divs");
     
             sections.forEach(sec => sec.style.display = "none");
         
@@ -100,6 +104,35 @@
         
                 sections.forEach(sec => {
                     sec.style.display = sec.id === chosen ? "grid" : "none";
+                });
+            });
+
+            selector.addEventListener("change", () => {
+                const chosen = selector.value;
+
+                [...divSelect.options].forEach(opt => {
+                    if (opt.value === "All Divisions") return;
+
+                    opt.style.display = (opt.dataset.year === chosen) ? "block" : "none";
+                });
+            });
+
+            
+            const divSelector = document.getElementById("divs");
+            const subjectCards = document.querySelectorAll(".subject-card");
+            const divisionCards = document.querySelectorAll(".division-card");
+
+            divSelector.addEventListener("change", () => {
+                const chosenDiv = divSelector.value;
+
+                divisionCards.forEach(card => {
+                    const matches = chosenDiv === "All Divisions" || card.dataset.division === chosenDiv;
+                    card.style.display = matches ? "block" : "none";
+                });
+
+                subjectCards.forEach(card => {
+                    const matches = chosenDiv === "All Divisions" || card.dataset.division === chosenDiv;
+                    card.style.display = matches ? "block" : "none";
                 });
             });
         </script>
