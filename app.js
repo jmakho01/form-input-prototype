@@ -23,23 +23,53 @@ const JSONdataTemp = {
                 },
             }
         },
-        //Division
-        "Tomato": {
-            // Stipend Unit/Academic Program
-            "DivisionChair": "Tomato Metevier",
-            "Dean": "Tomato Gilliland",
-            "LOCRep": "Tomato Bowen",
-            "PENContact": "Tomato Peterson",
+        "Humanities": {
+            "DivisionChair": "Katie Cunnion",
+            "Dean": "Jamie Fitzgerald",
+            "LOCRep": "Lisa Luengo",
+            "PENContact": "Liz Peterson",
             "Summary": { 
-                "Tomato" : {
+                "Communications Studies" : {
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "Notes": "No"
+                },
+            }
+        },
+         "Social Science": {
+            "DivisionChair": "Mark Thomason",
+            "Dean": "Christie Gilliland",
+            "LOCRep": "Joy Crawford",
+            "PENContact": "Liz Peterson",
+            "Summary": { 
+                "Anthropology" : {
                     "Payees": {
-                        "Tomato Sam": 333.00,
-                        "Tomato Kelly": 333.00,
-                        "Arranged Tomato Ruth": 333.00
+                        "Madeleine": 500.00,
+                        "Joy Crawford": 500.00,
                     },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
-                    "ReportSubmitted": "5/21/2025",
-                    "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
+                    "Notes": "Yes! Joy and Madeleine (Madeleine gets paid, Joy is a mentor)"
+                },
+                "History" : {
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "Notes": "No for this round"
+                },
+                "Political Science" : {
+                    "Payees": {
+                        "Lindsey": 500.00,
+                        "Yoav": 500.00,
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "Submitted 6/15",
+                    "Notes": "Yes! Lindsey Smith and Yoav will do a project"
+                },
+                "Psychology" : {
+                    "Payees": {
+                        "Joy": 500.00,
+                        "Jerry": 500.00,
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "Submitted 6/15",
+                    "Notes": "Yes! Joy and Jerry will do a project together"
                 },
             }
         },
