@@ -95,25 +95,6 @@ const JSONdataTemp = {
             }
         },
     }
-    // Old table
-    // "2022": {
-    //   "year": 2022,
-    //   "read-only": true,
-    //   "tables": {
-    //     "Science": {
-    //       "CSI 230": "Samuel Johnson",
-    //       "CSI 220": "Irridium Lovely"
-    //     },
-    //     "Mathematics": {
-    //       "MIT 210": "Chelsea Green",
-    //       "MAT 320": "Mark Johnson"
-    //     },
-    //     "Arts and STEM": {
-    //       "ART 250": "Artistic Mike",
-    //       "CHS 226": "Sally Mace"
-    //     }
-    //   }
-    // }
 };
 
 //Storing JSON object data into seperate array for summary page
