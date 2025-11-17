@@ -30,7 +30,11 @@ const JSONdataTemp = {
             "PENContact": "Liz Peterson",
             "Summary": { 
                 "Communications Studies" : {
+                    "Payees": {
+                        "None": 0
+                    },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
                     "Notes": "No"
                 },
             }
@@ -47,10 +51,15 @@ const JSONdataTemp = {
                         "Joy Crawford": 500.00,
                     },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
                     "Notes": "Yes! Joy and Madeleine (Madeleine gets paid, Joy is a mentor)"
                 },
                 "History" : {
+                    "Payees": {
+                        "None": 0
+                    },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
                     "Notes": "No for this round"
                 },
                 "Political Science" : {
