@@ -2,7 +2,7 @@ import express from 'express';
 
 const JSONdataTemp = {
     //Year
-    "2025-2026": {
+    "2024-2025": {
         //Division
         "Fine Arts": {
             // Stipend Unit/Academic Program
@@ -23,46 +23,140 @@ const JSONdataTemp = {
                 },
             }
         },
-        //Division
-        "Tomato": {
-            // Stipend Unit/Academic Program
-            "DivisionChair": "Tomato Metevier",
-            "Dean": "Tomato Gilliland",
-            "LOCRep": "Tomato Bowen",
-            "PENContact": "Tomato Peterson",
+        "Humanities": {
+            "DivisionChair": "Katie Cunnion",
+            "Dean": "Jamie Fitzgerald",
+            "LOCRep": "Lisa Luengo",
+            "PENContact": "Liz Peterson",
             "Summary": { 
-                "Tomato" : {
+                "Communications Studies" : {
                     "Payees": {
-                        "Tomato Sam": 333.00,
-                        "Tomato Kelly": 333.00,
-                        "Arranged Tomato Ruth": 333.00
+                        "None": 0
                     },
                     "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
-                    "ReportSubmitted": "5/21/2025",
-                    "Notes": "Yes! Sam, Kelly, and Ruth all work on this together and divide the money three ways."
+                    "ReportSubmitted": "None",
+                    "Notes": "No"
+                },
+            }
+        },
+         "Social Science": {
+            "DivisionChair": "Mark Thomason",
+            "Dean": "Christie Gilliland",
+            "LOCRep": "Joy Crawford",
+            "PENContact": "Liz Peterson",
+            "Summary": { 
+                "Anthropology" : {
+                    "Payees": {
+                        "Madeleine": 500.00,
+                        "Joy Crawford": 500.00,
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
+                    "Notes": "Yes! Joy and Madeleine (Madeleine gets paid, Joy is a mentor)"
+                },
+                "History" : {
+                    "Payees": {
+                        "None": 0
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    
+                    "Notes": "No for this round"
+                },
+                "Political Science" : {
+                    "Payees": {
+                        "Lindsey": 500.00,
+                        "Yoav": 500.00,
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "Submitted 6/15",
+                    "Notes": "Yes! Lindsey Smith and Yoav will do a project"
+                },
+                "Psychology" : {
+                    "Payees": {
+                        "Joy": 500.00,
+                        "Jerry": 500.00,
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "Submitted 6/15",
+                    "Notes": "Yes! Joy and Jerry will do a project together"
+                },
+            }
+        },
+        "English": {
+            "DivisionChair": "Ian Sherman",
+            "Dean": "Jamie Fitzgerald",
+            "LOCRep": "Jake Frye",
+            "PENContact": "Liz Peterson",
+            "Summary": { 
+                "Music" : {
+                    "Payees": {
+                        "Aley Martin": 175.00,
+                        "Claire Salcedo": 175.00,
+                        "Ericka Nelson": 175.00,
+                        "Jake": 475.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2025",
+                    "ReportSubmitted": "Report to be completed in year #2",
+                    "Notes": "Yes! See notes on adjuncts to pay. Will submit report next year 2025-2026"
+                },
+            }
+        },
+        "Science": {
+            "DivisionChair": "Katy Shaw and Danny Najera",
+            "Dean": "Miebeth Bustillo-Booth",
+            "LOCRep": "Nicole Feider",
+            "PENContact": "Heather Lambert",
+            "Summary": { 
+                "Anatomy and Physiology" : {
+                    "Payees": {
+                        "None": 0
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
+                    "Notes": "Initial Invite Sent from Julie 9/26/24. Follow up on 10/21"
+                },
+                "Biology/Environmental Science" : {
+                    "Payees": {
+                        "Leo Studach": 334.00,
+                        "Stephamie Hoffman": 333.00,
+                        "Danny Najera": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "Report coming this summer",
+                    "Notes": "Yes, they are doing a 2-year project with majors level Bio classes"
+                },
+                "Geology/Oceanography" : {
+                    "Payees": {
+                        "None": 0
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/3/2025",
+                    "ReportSubmitted": "None",
+                    "Notes": "Initial Invite Sent from Julie 9/26/24. Follow up on 10/21 and 11/20"
                 },
             }
         },
     },
-    // Old table
-    // "2022": {
-    //   "year": 2022,
-    //   "read-only": true,
-    //   "tables": {
-    //     "Science": {
-    //       "CSI 230": "Samuel Johnson",
-    //       "CSI 220": "Irridium Lovely"
-    //     },
-    //     "Mathematics": {
-    //       "MIT 210": "Chelsea Green",
-    //       "MAT 320": "Mark Johnson"
-    //     },
-    //     "Arts and STEM": {
-    //       "ART 250": "Artistic Mike",
-    //       "CHS 226": "Sally Mace"
-    //     }
-    //   }
-    // }
+    "2025-2026": {
+        "Science": {
+            // Stipend Unit/Academic Program
+            "DivisionChair": "David Schienche",
+            "Dean": "Christ Elmity",
+            "LOCRep": "Monica Lonica",
+            "PENContact": "Torrent Stead",
+            "Summary": { 
+                "Geology" : {
+                    "Payees": {
+                        "Mars": 333.00,
+                        "Fred": 333.00,
+                        "Richie": 333.00
+                    },
+                    "HasBeenPaid": "Emails sent to Building Admins on 5/2/2026",
+                    "ReportSubmitted": "5/20/2026",
+                    "Notes": "Yes! Mars, Fred, and Richie all work on this together and divide the money three ways."
+                },
+            }
+        },
+    }
 };
 
 //Storing JSON object data into seperate array for summary page

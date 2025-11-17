@@ -20,11 +20,25 @@
             <a href="/history" role="button">History</a>
         </div>
     </div>
-
+    <% let yearChosen = ""%>
     <div class = "mainSection">
         <div class="card-grid" id="cardContainer">
+            <select name="yearChoice" id="years">
+                <option disabled hidden selected>Choose a year</option>
+                <% Object.entries(Data).forEach(([year]) => { %>
+                    <option value="<%=year%>"><%=year%></option>
+                <%})%>
+            </select>
+            <select value="divChoice" id="divs">
+                <option selected>All Divisions</option>
+                <% Object.entries(Data).forEach(([year, divisions]) => { %>
+                    <% Object.entries(divisions).forEach(([division, info]) => { %>
+                        <option value="<%=division%>"><%=division%></option>
+                    <%})%>
+                <%})%>
+            </select>
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
-                <div class = "singlecard">
+                <div id="<%=year%>" class = "singlecard">
                     <!-- <h2 class="YearCard"><%= year %></h2> -->
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
                         <div class="division-card" data-division="<%= division %>">
@@ -75,5 +89,19 @@
                 <%})%>
             </div>
         </div>
+        <script>
+            const selector = document.getElementById("years");
+            const sections = document.querySelectorAll(".singlecard");
+    
+            sections.forEach(sec => sec.style.display = "none");
+        
+            selector.addEventListener("change", () => {
+                const chosen = selector.value;
+        
+                sections.forEach(sec => {
+                    sec.style.display = sec.id === chosen ? "grid" : "none";
+                });
+            });
+        </script>
 </body>
 </html>
