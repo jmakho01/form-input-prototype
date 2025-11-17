@@ -88,7 +88,7 @@ const JSONdataTemp = {
             "LOCRep": "Jake Frye",
             "PENContact": "Liz Peterson",
             "Summary": { 
-                "Music" : {
+                "English" : {
                     "Payees": {
                         "Aley Martin": 175.00,
                         "Claire Salcedo": 175.00,
@@ -160,7 +160,7 @@ const JSONdataTemp = {
 };
 
 //Storing JSON object data into seperate array for summary page
-const data = JSONdataTemp["2025-2026"];
+const data = JSONdataTemp["2024-2025"];
 const rows = [];
 
 for (const [divisionName, division] of Object.entries(data)) {
