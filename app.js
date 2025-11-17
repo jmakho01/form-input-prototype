@@ -159,6 +159,7 @@ const JSONdataTemp = {
     }
 };
 
+
 //Storing JSON object data into seperate array for summary page
 const data = JSONdataTemp["2024-2025"];
 const rows = [];

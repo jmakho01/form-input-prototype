@@ -132,6 +132,13 @@
         border-width: 3px;
         border-color: lightcoral;
     }
+
+    .dropdown {
+        border-radius: 0.375rem;
+    }
+    .dropdown:hover {
+        color: #0f5132;
+    }
     /*Not sure exactly how this button works, and my attempts to target it with css have failed. 
     Funcitonal for now but needs work in the future */
     material-symbols-outlined {
