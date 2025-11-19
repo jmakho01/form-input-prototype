@@ -34,11 +34,14 @@
                 <option selected>All Divisions</option>
                 <% Object.entries(Data).forEach(([year, divisions]) => { %>
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
-                        <option hidden value="<%= division %>" data-year="<%= year %>">
+                        <option value = "<%= division %>" data-year = "<%= year %>" style = "display:none;">
                             <%= division %>
                         </option>
                     <% }) %>
                 <% }) %>
+            </select>
+            <select class="dropdown" id="programs">
+                <option selected>All Programs</option>
             </select>
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div id="<%=year%>" class = "singlecard">
@@ -62,7 +65,7 @@
                         <% if (info.Summary) { %>
                             <div class="summary-section">
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
-                                <div class="subject-card" data-division="<%= division %>">
+                                <div class="subject-card" data-division = "<%= division %>" data-program = "<%= subject %>">
                                   <h3><%= subject %></h3>
                                   <p><strong>Has Been Paid:</strong> <span class="editable" name = "Payment status" data-field="HasBeenPaid"><%= details.HasBeenPaid %></span></p>
                                   <p><strong>Report Submitted:</strong> <span class="editable" name = "Report Status" data-field="ReportSubmitted"><%= details.ReportSubmitted %></span></p>
@@ -71,10 +74,18 @@
                                     <h3>Payees:</h3>
                                     <div id="PayeeHolder">
                                         <% Object.entries(details.Payees).forEach(([name, amount]) => { %>
-                                            <p class="editable-payee" data-name="<%= name %>"><%= name %> | <%= amount.toFixed(2) %></p>
+                                            <p class="editable-payee" data-name="<%= name %>">
+                                            <span class = "payee-name"><%= name %></span> | 
+                                            <span class = "payee-amount"><%= amount.toFixed(2) %></span>
+                                            <button class = "remove-payee" style = "display: none;">X</button>
+                                        </p>
                                         <% }) %>
                                     </div>
                                   <% } %>
+
+                                  <div class = "payee-controls" style = "display:none;">
+                                        <button class = "add-payee">Add Payee</button>
+                                  </div>
 
                                     <div class="edit-controls">
                                         <button class="edit-btn">Edit</button>
