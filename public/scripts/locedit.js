@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const saveBtn = card.querySelector(".save-btn");
     const cancelBtn = card.querySelector(".cancel-btn");
     const errorBox = card.querySelector(".error-message");
+    const payeeControls = card.querySelector(".payee-controls");
+
     let originalValues = {};
 
     // edit mode
@@ -26,86 +28,118 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // editable payees
-      card.querySelectorAll(".editable-payee").forEach(p => {
-        const name = p.dataset.name;
-        const [_, amt] = p.textContent.split("|").map(s => s.trim());
-        originalValues[name] = amt;
+      const payeeHolder = card.querySelector("#PayeeHolder");
+      if (payeeHolder) {
+        payeeHolder.querySelectorAll(".editable-payee").forEach(p => {
+          const name = p.querySelector(".payee-name").textContent.trim();
+          const amount = p.querySelector(".payee-amount").textContent.trim();
 
-        const input = document.createElement("input");
-        input.classList.add("edit-input");
-        input.name = name;
-        input.value = amt;
+          originalValues[name] = amount;
 
-        p.innerHTML = `${name} | `;
-        p.appendChild(input);
-      });
+          p.innerHTML = `
+            <input class="edit-input payee-name-input" value="${name}">
+            |
+            <input class="edit-input payee-amount-input" value="${amount}">
+            <button class="remove-payee">X</button>
+          `;
+        });
+      }
+
+      if (payeeControls) payeeControls.style.display = "block";
 
       toggleButtons("edit");
       errorBox.style.display = "none";
     });
 
+    // payee events (adding and removing)
+    card.addEventListener("click", (e) => {
+      const payeeHolder = card.querySelector("#PayeeHolder");
+
+      // adding
+      if (e.target.classList.contains("add-payee")) {
+        const p = document.createElement("p");
+        p.classList.add("editable-payee");
+        p.innerHTML = `
+          <input class="edit-input payee-name-input" placeholder="Name">
+          |
+          <input class="edit-input payee-amount-input" placeholder="Amount">
+          <button class="remove-payee">X</button>
+        `;
+        payeeHolder.appendChild(p);
+      }
+
+      // removing
+      if (e.target.classList.contains("remove-payee")) {
+        e.target.closest("p").remove();
+      }
+    });
+
     // save edits
     saveBtn.addEventListener("click", () => {
       const inputs = card.querySelectorAll(".edit-input");
-      let valid = "valid";
-      let addedpayee = false;
       const updated = {};
+      let valid = true;
 
       // validate inputs
       inputs.forEach(input => {
         if (!input.value.trim()) {
           input.classList.add("error");
-          if (valid === "valid") {
-            console.log("Checking input:", input.id, input.value);
-            if (!input.classList.contains("editable-payee")) {
-              valid = input.name; }
-            else {
-              valid = "Payee";
-            }
-          }
-          else {
-            console.log("Checking input:", input.id, input.value);
-            if (!input.classList.contains("editable-payee")) {
-              valid = valid + " " + input.name; }
-            else if (addedpayee == false) {
-              valid = valid + " " + "Payee";
-              addedpayee = true;
-            }
-          }
+          valid = false;
         } else {
           input.classList.remove("error");
-          updated[input.name] = input.value.trim();
         }
       });
 
-      if (valid !== "valid") {
-        errorBox.textContent = "Please fill in all required fields. Missing fields: " +  valid;
+      if (!valid) {
+        errorBox.textContent = "Please fill in all required fields.";
         errorBox.style.display = "block";
-        return; // stop save if invalid
+        return;
       }
+
       errorBox.style.display = "none";
 
-      // replace inputs with spans
-      inputs.forEach(input => {
-        if (card.classList.contains("division-card")) {
+      // restore original view mode
+      if (card.classList.contains("division-card")) {
+        inputs.forEach(input => {
           const span = document.createElement("span");
           span.classList.add("editable");
           span.dataset.field = input.name;
           span.textContent = input.value;
+          updated[input.name] = input.value;
           input.replaceWith(span);
-        } else if (card.classList.contains("subject-card")) {
-          if (input.closest("#PayeeHolder")) {
-            const p = input.closest("p");
-            p.innerHTML = `${input.name} | ${input.value}`;
-          } else {
+        });
+      }
+
+      if (card.classList.contains("subject-card")) {
+        updated.Payees = {};
+        const payeeHolder = card.querySelector("#PayeeHolder");
+
+        // save payees
+        payeeHolder.querySelectorAll(".editable-payee").forEach(p => {
+          const name = p.querySelector(".payee-name-input").value.trim();
+          const amount = p.querySelector(".payee-amount-input").value.trim();
+
+          updated.Payees[name] = amount;
+
+          p.innerHTML = `
+            <span class="payee-name">${name}</span> |
+            <span class="payee-amount">${amount}</span>
+            <button class="remove-payee" style="display:none;">X</button>
+          `;
+        });
+
+        // save other fields
+        inputs.forEach(input => {
+          if (!input.closest(".editable-payee")) {
             const span = document.createElement("span");
             span.classList.add("editable");
             span.dataset.field = input.name;
             span.textContent = input.value;
+            updated[input.name] = input.value;
             input.replaceWith(span);
           }
-        }
-      });
+        });
+      }
 
       // record in-memory edits
       updated.timestamp = new Date().toLocaleString();
@@ -118,33 +152,46 @@ document.addEventListener("DOMContentLoaded", () => {
       // show confirmation message
       alert("Changes saved!");
       toggleButtons("save");
+
+      if (payeeControls) payeeControls.style.display = "none";
     });
 
     // cancel edits
     cancelBtn.addEventListener("click", () => {
+      // restore fields
       card.querySelectorAll(".edit-input").forEach(input => {
         const name = input.name;
-        const value = originalValues[name] || "";
+        const original = originalValues[name] || "";
 
-        if (card.classList.contains("division-card")) {
+        if (!input.closest(".editable-payee")) {
           const span = document.createElement("span");
           span.classList.add("editable");
           span.dataset.field = name;
-          span.textContent = value;
+          span.textContent = original;
           input.replaceWith(span);
-        } else if (card.classList.contains("subject-card")) {
-          if (input.closest("#PayeeHolder")) {
-            const p = input.closest("p");
-            p.innerHTML = `${name} | ${value}`;
-          } else {
-            const span = document.createElement("span");
-            span.classList.add("editable");
-            span.dataset.field = name;
-            span.textContent = value;
-            input.replaceWith(span);
-          }
         }
       });
+
+      // restore payees
+      const payeeHolder = card.querySelector("#PayeeHolder");
+      if (payeeHolder) {
+        payeeHolder.innerHTML = "";
+
+        Object.entries(originalValues).forEach(([name, amount]) => {
+          if (!isNaN(amount)) {
+            const p = document.createElement("p");
+            p.classList.add("editable-payee");
+            p.innerHTML = `
+              <span class="payee-name">${name}</span> |
+              <span class="payee-amount">${amount}</span>
+              <button class="remove-payee" style="display:none;">X</button>
+            `;
+            payeeHolder.appendChild(p);
+          }
+        });
+      }
+
+      if (payeeControls) payeeControls.style.display = "none";
 
       errorBox.style.display = "none";
       toggleButtons("cancel");
@@ -163,4 +210,43 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  const programSelect = document.getElementById("programs");
+  const subjectCards = document.querySelectorAll(".subject-card");
+  const divSelect2 = document.getElementById("divs");
+
+  // when a division is selected, populate program list
+  divSelect2.addEventListener("change", () => {
+    const division = divSelect2.value;
+
+    // clear old program options
+    programSelect.innerHTML = `<option>All Programs</option>`;
+
+    // fill program dropdown with programs from selected division
+    subjectCards.forEach(card => {
+      if (division === "All Divisions" || card.dataset.division === division) {
+        const programName = card.dataset.program;
+        const opt = document.createElement("option");
+        opt.value = programName;
+        opt.textContent = programName;
+        programSelect.appendChild(opt);
+      }
+    });
+
+      // trigger filtering
+      programSelect.dispatchEvent(new Event("change"));
+    });
+
+    // filter subject-cards by program
+    programSelect.addEventListener("change", () => {
+        const chosenProgram = programSelect.value;
+        const chosenDivision = divSelect2.value;
+
+        subjectCards.forEach(card => {
+            const divMatch = (chosenDivision === "All Divisions" || card.dataset.division === chosenDivision);
+            const progMatch = (chosenProgram === "All Programs" || card.dataset.program === chosenProgram);
+
+            card.style.display = (divMatch && progMatch) ? "block" : "none";
+        });
+    });
 });
