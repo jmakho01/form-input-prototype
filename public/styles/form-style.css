@@ -46,6 +46,7 @@
         display: flex;
         background-color: rgb(165, 192, 192);
         flex-wrap: wrap;
+        align-items: flex-start;
         font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
         padding: 3px;
         gap: 16px;
@@ -55,7 +56,7 @@
     }
     .division-card {
         padding: 5px;
-        max-width: 300px;
+        width: 335px;
         background-color: lightgreen;
         border-style: groove;
         border-width: 3px;
@@ -63,7 +64,7 @@
     }
     .subject-card {
         padding: 5px;
-        max-width: 300px;
+        width: 335px;
         background-color: lightblue;
         border-style: groove;
         border-width: 3px;
