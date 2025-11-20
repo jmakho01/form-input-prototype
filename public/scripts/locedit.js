@@ -36,13 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
           originalValues[name] = amount;
 
-          p.innerHTML = `
           // Form start
+          p.innerHTML = `
             <input class="edit-input payee-name-input" value="${name}">
             |
             <input class="edit-input payee-amount-input" value="${amount}">
-            <button class="remove-payee">X</button> //Form submit button
-          // Form end
+            <button class="remove-payee">X</button>
           `;
           // Form when posted, push new data where data matches before-edits
         });
@@ -78,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // save edits
-    saveBtn.addEventListener("click", () => {
+    saveBtn.addEventListener("click", async () => {
       const inputs = card.querySelectorAll(".edit-input");
       const updated = {};
       let valid = true;
@@ -103,17 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // restore original view mode
       if (card.classList.contains("division-card")) {
-        inputs.forEach(input => {
-          const span = document.createElement("span");
-          span.classList.add("editable");
-          span.dataset.field = input.name;
-          span.textContent = input.value;
-          updated[input.name] = input.value;
-          input.replaceWith(span);
-        });
-      }
+        inputs.forEach(input => updated[input.name] = input.value);
 
-      if (card.classList.contains("subject-card")) {
+      } else if (card.classList.contains("subject-card")) {
         updated.Payees = {};
         const payeeHolder = card.querySelector("#PayeeHolder");
 
@@ -121,42 +112,71 @@ document.addEventListener("DOMContentLoaded", () => {
         payeeHolder.querySelectorAll(".editable-payee").forEach(p => {
           const name = p.querySelector(".payee-name-input").value.trim();
           const amount = p.querySelector(".payee-amount-input").value.trim();
-
           updated.Payees[name] = amount;
-
-          p.innerHTML = `
-            <span class="payee-name">${name}</span> |
-            <span class="payee-amount">${amount}</span>
-            <button class="remove-payee" style="display:none;">X</button>
-          `;
         });
 
         // save other fields
         inputs.forEach(input => {
           if (!input.closest(".editable-payee")) {
-            const span = document.createElement("span");
-            span.classList.add("editable");
-            span.dataset.field = input.name;
-            span.textContent = input.value;
             updated[input.name] = input.value;
-            input.replaceWith(span);
           }
         });
       }
 
-      // record in-memory edits
-      updated.timestamp = new Date().toLocaleString();
-      updated.context = card.classList.contains("division-card") ? "Division" : "Program";
-      updated.identifier = card.dataset.division || card.dataset.program;
-      inMemoryEdits.push(updated);
+      // send to server
+      try {
+        const response = await fetch('/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: card.classList.contains("division-card") ? "Division" : "Program",
+            identifier: card.dataset.division || card.dataset.program,
+            updates: updated
+          })
+        });
 
-      console.log("Edits in memory:", inMemoryEdits);
+        const result = await response.json();
 
-      // show confirmation message
-      alert("Changes saved!");
-      toggleButtons("save");
+        if (result.success) {
+          // Update DOM with saved values
+          inputs.forEach(input => {
+            if (!input.closest(".editable-payee")) {
+              const span = document.createElement("span");
+              span.classList.add("editable");
+              span.dataset.field = input.name;
+              span.textContent = input.value;
+              input.replaceWith(span);
+            }
+          });
 
-      if (payeeControls) payeeControls.style.display = "none";
+          // Update payees
+          const payeeHolder = card.querySelector("#PayeeHolder");
+          if (payeeHolder) {
+            payeeHolder.innerHTML = "";
+            Object.entries(updated.Payees || {}).forEach(([name, amount]) => {
+              const p = document.createElement("p");
+              p.classList.add("editable-payee");
+              p.innerHTML = `
+                <span class="payee-name">${name}</span> |
+                <span class="payee-amount">${amount}</span>
+                <button class="remove-payee" style="display:none;">X</button>
+              `;
+              payeeHolder.appendChild(p);
+            });
+          }
+
+          if (payeeControls) payeeControls.style.display = "none";
+          toggleButtons("save");
+          alert("Database updated successfully!");
+        } else {
+          errorBox.textContent = result.error || "Error updating database.";
+          errorBox.style.display = "block";
+        }
+      } catch (err) {
+        console.error(err);
+        errorBox.textContent = "Network/server error.";
+        errorBox.style.display = "block";
+      }
     });
 
     // cancel edits
@@ -228,10 +248,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // fill program dropdown with programs from selected division
     subjectCards.forEach(card => {
       if (division === "All Divisions" || card.dataset.division === division) {
-        const programName = card.dataset.program;
         const opt = document.createElement("option");
-        opt.value = programName;
-        opt.textContent = programName;
+        opt.value = card.dataset.programName;
+        opt.textContent = card.dataset.programName;
         programSelect.appendChild(opt);
       }
     });
