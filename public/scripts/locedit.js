@@ -130,7 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             type: card.classList.contains("division-card") ? "Division" : "Program",
-            identifier: card.dataset.division || card.dataset.program,
+            identifier: card.classList.contains("division-card") 
+              ? card.dataset.division 
+              : card.dataset.program,
             updates: updated
           })
         });
