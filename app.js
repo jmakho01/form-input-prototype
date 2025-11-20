@@ -93,20 +93,16 @@ app.post('/update', async (req, res) => {
         } else {
             return res.json({ success: false, error: "Unknown type" });
         }
-        const [rows] = await pool.execute("SELECT MAX(id) AS LastID FROM edits");
+        
         const erecord = {
-            id: (rows[0].LastID +1),
-            ct: updates.divisionName,
+            ct: identifier ?? null,
             ts: new Date()
         };
 
-        const sql2 = "INSERT INTO edits (id, ct, ts) VALUES (?, ?, ?)";
-
-        try {
-            await pool.execute(sql2, [erecord.id, erecord.ct, erecord.ts]);
-        } catch (err) {
-            console.log("Database Error", err);
-        } 
+        await pool.execute(
+            "INSERT INTO edits (ct, ts) VALUES (?, ?)",
+            [erecord.ct, erecord.ts]
+);
 
         res.json({ success: true });
 
