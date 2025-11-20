@@ -1,22 +1,10 @@
 
     .card-grid {
       padding: 16px;
-    }
-
-    card-for-others-to-use {
-      display: block;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 12px;
-      background: #f9f9f9;
-      font-family: sans-serif;
-      border-style: groove;
-      border-width: 7px;
-      font-family: "Roboto Mono", "Source Code Pro", "Consolas", "Courier New", monospace;
-    }
-
-    card-for-others-to-use h2 {
-      margin-top: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .header {
@@ -29,21 +17,6 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         border-bottom: 4px solid #198754;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    td, th {
-      border: 1px solid #ddd;
-      padding: 4px 6px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #eee;
     }
 
     /* Card elements */
@@ -70,9 +43,9 @@
         /*background-color: rgb(165, 192, 192)*/
     }
     .singlecard {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        display: flex;
         background-color: rgb(165, 192, 192);
+        flex-wrap: wrap;
         font-family: "Nunito Sans", "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
         padding: 3px;
         gap: 16px;
@@ -82,6 +55,7 @@
     }
     .division-card {
         padding: 5px;
+        max-width: 300px;
         background-color: lightgreen;
         border-style: groove;
         border-width: 3px;
@@ -89,6 +63,7 @@
     }
     .subject-card {
         padding: 5px;
+        max-width: 300px;
         background-color: lightblue;
         border-style: groove;
         border-width: 3px;
@@ -139,14 +114,7 @@
     .dropdown:hover {
         color: #0f5132;
     }
-    /*Not sure exactly how this button works, and my attempts to target it with css have failed. 
-    Funcitonal for now but needs work in the future */
-    material-symbols-outlined {
-        width: 100px;
-        height: 40px;
-        color: beige;
-        align-self: center;
-    }
+
 
     @media screen and (max-width: 480px) { 
 

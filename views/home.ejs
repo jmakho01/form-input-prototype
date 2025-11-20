@@ -22,8 +22,6 @@
         </div>
     </div>
     <% let yearChosen = ""%>
-    <div class = "mainSection">
-        <div class="card-grid" id="cardContainer">
             <select name="yearChoice" class = "dropdown" id="years">
                 <option disabled hidden selected>Choose a year</option>
                 <% Object.entries(Data).forEach(([year]) => { %>
@@ -43,6 +41,8 @@
             <select class="dropdown" id="programs">
                 <option selected>All Programs</option>
             </select>
+    <div class = "mainSection">
+        <div class="card-grid" id="cardContainer">
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
                 <div id="<%=year%>" class = "singlecard">
                     <!-- <h2 class="YearCard"><%= year %></h2> -->
@@ -114,7 +114,7 @@
                 const chosen = selector.value;
         
                 sections.forEach(sec => {
-                    sec.style.display = sec.id === chosen ? "grid" : "none";
+                    sec.style.display = sec.id === chosen ? "flex" : "none";
                 });
             });
 
