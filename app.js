@@ -63,8 +63,14 @@ app.get('/summary', async(req, res) => {
     }
 });
 
-app.get('/history', (req, res) => {
-    res.render(`history`);
+app.get('/history', async (req, res) => {
+    try {
+        const [ edits ] = await pool.query('SELECT * FROM edits');
+        res.render(`history`, { edits });
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading edits: ' + err.message);
+    }
 });
 
 app.listen(PORT, () => {
