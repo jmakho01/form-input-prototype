@@ -26,12 +26,14 @@
         <table id = "loc-table" class = "display">
             <thead>
                 <tr>
-                    <th>Division</th>
-                    <th>Academic Program</th>
+                    <th>Division ID</th>
+                    <th>Division Name</th>
                     <th>Division Chair</th>
                     <th>Dean</th>
                     <th>LOC Rep</th>
                     <th>PEN Contact</th>
+                    <th>Division ID</th>
+                    <th>Academic Program</th>
                     <th>Payee(s)</th>
                     <th>Has Been Paid</th>
                     <th>Report Submitted</th>
@@ -41,16 +43,18 @@
                 <tbody>
                     <% rows.forEach(row => { %>
                     <tr>
-                        <td><%= row.division %></td>
-                        <td><%= row.program %></td>
-                        <td><%= row.chair %></td>
-                        <td><%= row.dean %></td>
-                        <td><%= row.locRep %></td>
-                        <td><%= row.penContact %></td>
-                        <td><%= row.payees %></td>
-                        <td><%= row.paid %></td>
-                        <td><%= row.report %></td>
-                        <td><%= row.notes %></td>
+                        <td><%= row.DivisionID %></td>
+                        <td><%= row.DivisionName %></td>
+                        <td><%= row.DivisionChair %></td>
+                        <td><%= row.Dean %></td>
+                        <td><%= row.LOCRep %></td>
+                        <td><%= row.PENContact %></td>
+                        <td><%= row.DivisionID %></td>
+                        <td><%= row.ProgramName %></td>
+                        <td><%= row.Payees %></td>
+                        <td><%= row.HasBeenPaid %></td>
+                        <td><%= row.ReportSubmitted %></td>
+                        <td><%= row.Notes %></td>
                     </tr>
                     <% }) %>
                 </tbody>
