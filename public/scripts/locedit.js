@@ -37,11 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
           originalValues[name] = amount;
 
           p.innerHTML = `
+          // Form start
             <input class="edit-input payee-name-input" value="${name}">
             |
             <input class="edit-input payee-amount-input" value="${amount}">
-            <button class="remove-payee">X</button>
+            <button class="remove-payee">X</button> //Form submit button
+          // Form end
           `;
+          // Form when posted, push new data where data matches before-edits
         });
       }
 
