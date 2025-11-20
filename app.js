@@ -40,6 +40,30 @@ const pool = mysql2.createPool({
 }).promise();
 
 
+// app.post('/submit-form', async(req, res) => {
+//   try {
+//       const edits = req.body;
+//       console.log('New order submitted:', order);
+//       order.toppings = Array.isArray(order.toppings) ? order.toppings.join(", ") : "";
+//       const sql =
+//           `INSERT INTO divisions(divisionID, divisionName, dean, locRep, penContact, academicProgram, payees, hasBeenPaid, reportSubmitted, notes)
+//           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
+//       const params = [
+//           edits.divisionID,
+//           edits.,
+//           edits.flavor,
+//           edits.cone,
+//           edits.toppings,
+//       ];
+//       const [result] = await pool.execute(sql, params);
+//       console.log('Order saved with ID:', result.insertId);
+//       res.render('confirmation', {order});
+//   } catch (err) {
+//       console.error("Error saving order:", err);
+//       res.status(500).send("Sorry, there was an error processing your order. Please try again.");
+//   }
+// });
+
 const app = express();
 
 const PORT = 3099;
