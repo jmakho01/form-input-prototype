@@ -26,6 +26,7 @@ for (const [divisionName, division] of Object.entries(data)) {
   }
 }
 
+
 const app = express();
 
 const PORT = 3099;
