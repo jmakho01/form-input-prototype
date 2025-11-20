@@ -39,31 +39,6 @@ const pool = mysql2.createPool({
     port: process.env.DB_PORT
 }).promise();
 
-
-// app.post('/submit-form', async(req, res) => {
-//   try {
-//       const edits = req.body;
-//       console.log('New order submitted:', order);
-//       order.toppings = Array.isArray(order.toppings) ? order.toppings.join(", ") : "";
-//       const sql =
-//           `INSERT INTO divisions(divisionID, divisionName, dean, locRep, penContact, academicProgram, payees, hasBeenPaid, reportSubmitted, notes)
-//           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
-//       const params = [
-//           edits.divisionID,
-//           edits.,
-//           edits.flavor,
-//           edits.cone,
-//           edits.toppings,
-//       ];
-//       const [result] = await pool.execute(sql, params);
-//       console.log('Order saved with ID:', result.insertId);
-//       res.render('confirmation', {order});
-//   } catch (err) {
-//       console.error("Error saving order:", err);
-//       res.status(500).send("Sorry, there was an error processing your order. Please try again.");
-//   }
-// });
-
 const app = express();
 
 const PORT = 3099;
@@ -71,9 +46,60 @@ const PORT = 3099;
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.render(`home`,  { Data : JSONdataTemp });
+});
+
+app.post('/update', async (req, res) => {
+    try {
+        const { type, identifier, updates } = req.body;
+        console.log('Update received:', type, identifier, updates);
+
+        if (type === "Division") {
+        // Update division info
+        const sql = `
+            UPDATE divisions
+            SET DivisionChair = ?, Dean = ?, LOCRep = ?, PENContact = ?
+            WHERE DivisionName = ?;
+        `;
+
+        await pool.execute(sql, [
+            updates.DivisionChair || null,
+            updates.Dean || null,
+            updates.LOCRep || null,
+            updates.PENContact || null,
+            identifier
+        ]);
+
+        } else if (type === "Program") {
+         // Update program info including payees as JSON
+        const sqlProgram = `
+            UPDATE programs
+            SET HasBeenPaid = ?, ReportSubmitted = ?, Notes = ?, Payees = ?
+            WHERE ProgramName = ?;
+        `;
+
+        await pool.execute(sqlProgram, [
+            updates.HasBeenPaid || null,
+            updates.ReportSubmitted || null,
+            updates.Notes || null,
+            JSON.stringify(updates.Payees || {}),
+            identifier
+        ]);
+
+        } else {
+            return res.json({ success: false, error: "Unknown type" });
+        }
+
+        res.json({ success: true });
+
+    } catch (err) {
+        console.error('Error updating database:', err);
+        res.json({ success: false, error: err.message });
+    }
 });
 
 app.get('/summary', async(req, res) => {
