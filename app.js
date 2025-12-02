@@ -100,6 +100,7 @@ app.post('/update', async (req, res) => {
         };
 
         await pool.execute(
+            //"INSERT INTO edits (ct, ts) VALUES (?, ?)", [erecord.ct, erecord.ts]
             "INSERT INTO edits (ct, ts) VALUES (?, ?)",
             [erecord.ct, erecord.ts]
 );
