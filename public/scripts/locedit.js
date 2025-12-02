@@ -251,8 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
     subjectCards.forEach(card => {
       if (division === "All Divisions" || card.dataset.division === division) {
         const opt = document.createElement("option");
-        opt.value = card.dataset.programName;
-        opt.textContent = card.dataset.programName;
+        opt.value = card.dataset.program;
+        opt.textContent = card.dataset.program;
         programSelect.appendChild(opt);
       }
     });
