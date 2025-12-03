@@ -26,6 +26,7 @@
             <thead>
                 <tr>
                     <th>Context</th>
+                    <th>Change</th>
                     <th>Timestamp</th>
                 </tr>
             </thead>
@@ -33,6 +34,7 @@
                 <%  edits.forEach(edit => { %>
                 <tr>
                     <td><%= edit.ct %></td>
+                    <td><%= edit.ud %></td>
                     <td><%= edit.ts.toLocaleString() %></td>
                 </tr>
                 <% }); %>

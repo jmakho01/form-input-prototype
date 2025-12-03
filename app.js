@@ -96,13 +96,12 @@ app.post('/update', async (req, res) => {
         
         const erecord = {
             ct: identifier ?? null,
-            ts: new Date()
+            ts: new Date(),
+            ud: updates ?? null
         };
 
         await pool.execute(
-            //"INSERT INTO edits (ct, ts) VALUES (?, ?)", [erecord.ct, erecord.ts]
-            "INSERT INTO edits (ct, ts) VALUES (?, ?)",
-            [erecord.ct, erecord.ts]
+            "INSERT INTO edits (ct, ts, ud) VALUES (?, ?, ?)", [erecord.ct, erecord.ts, erecord.ud]
 );
 
         res.json({ success: true });
