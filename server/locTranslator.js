@@ -71,7 +71,7 @@ export async function translatingFromDB() {
             } catch {
                 payeesObj = {};
             }
-            // Payee info held by the current data we're looping through
+            // Underreview and other info held by the current data we're looping through
             result[year][d.DivisionName].Summary[p.ProgramName] = {
                 Payees: payeesObj,
                 HasBeenPaid: p.HasBeenPaid || "None",
