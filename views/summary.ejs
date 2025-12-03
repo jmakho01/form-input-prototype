@@ -23,10 +23,15 @@
         <main>
         <header>
         <h1>Summary Page</h1>
+        <select id="reviewFilter">
+            <option value="">Show All Programs</option>
+            <option value="Yes">Programs Under Review</option>
+            <option value="No">Programs Not Under Review</option>
+        </select>
         <table id = "loc-table" class = "display">
             <thead>
                 <tr>
-                    <th>Division ID</th>
+                    <th>Under Review</th>
                     <th>Division Name</th>
                     <th>Division Chair</th>
                     <th>Dean</th>
@@ -42,7 +47,7 @@
                 <tbody>
                     <% rows.forEach(row => { %>
                     <tr>
-                        <td><%= row.DivisionID %></td>
+                        <td><%= row.UnderReview ? "Yes" : "No" %></td>
                         <td><%= row.DivisionName %></td>
                         <td><%= row.DivisionChair %></td>
                         <td><%= row.Dean %></td>
@@ -61,6 +66,11 @@
     </main>
     <script defer>
         let table = new DataTable('#loc-table');
+        $("#reviewFilter").on("change", function() {
+            table.column(0)  // Under Review column index
+            .search(this.value)
+            .draw();
+        });
     </script>
 </body>
 </html>
