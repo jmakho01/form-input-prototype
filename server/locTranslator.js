@@ -47,6 +47,7 @@ export async function translatingFromDB() {
             Summary: {}
         };
 
+        // Gathering array of matching programs by divisionID
         let array = [];
 
         for(const p of programs) {
@@ -57,6 +58,7 @@ export async function translatingFromDB() {
 
         const divisionPrograms = array;
 
+        // For const of divisionPrograms 
         for (const p of divisionPrograms) {
             let payeesObj = {};
 
