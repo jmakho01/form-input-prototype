@@ -22,13 +22,13 @@
         </div>
     </div>
     <% let yearChosen = ""%>
-            <select name="yearChoice" class = "dropdown" id="years">
+            <select name = "yearChoice" class = "dropdown" id="years">
                 <option disabled hidden selected>Choose a year</option>
                 <% Object.entries(Data).forEach(([year]) => { %>
                     <option value="<%=year%>"><%=year%></option>
                 <%})%>
             </select>
-            <select value="divChoice" class = "dropdown" id="divs">
+            <select class = "dropdown" id = "divs">
                 <option selected>All Divisions</option>
                 <% Object.entries(Data).forEach(([year, divisions]) => { %>
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
@@ -38,21 +38,21 @@
                     <% }) %>
                 <% }) %>
             </select>
-            <select class="dropdown" id="programs">
+            <select class = "dropdown" id = "programs">
                 <option selected>All Programs</option>
             </select>
     <div class = "mainSection">
-        <div class="card-grid" id="cardContainer">
+        <div class = "card-grid" id = "cardContainer">
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
-                <div id="<%=year%>" class = "singlecard">
+                <div id = "<%=year%>" class = "singlecard">
                     <!-- <h2 class="YearCard"><%= year %></h2> -->
                     <% Object.entries(divisions).forEach(([division, info]) => { %>
                         <div class="division-card" data-division="<%= division %>">
                             <h3 class="divison-card"><%= division %></h3>
-                            <p>Division Chair: <span class="editable" name = "Division Chair" data-field="DivisionChair"><%= info.DivisionChair %></span></p>
-                            <p>Dean: <span class="editable" name = "Dean" data-field="Dean"><%= info.Dean %></span></p>
-                            <p>LOC Rep: <span class="editable" name = "LOC Rep" data-field="LOCRep"><%= info.LOCRep %></span></p>
-                            <p>PEN Contact: <span class="editable" name = "PEN Contact" data-field="PENContact"><%= info.PENContact %></span></p>
+                            <p>Division Chair: <span class = "editable" data-field = "DivisionChair"><%= info.DivisionChair %></span></p>
+                            <p>Dean: <span class = "editable" data-field = "Dean"><%= info.Dean %></span></p>
+                            <p>LOC Rep: <span class = "editable" data-field = "LOCRep"><%= info.LOCRep %></span></p>
+                            <p>PEN Contact: <span class = "editable" data-field = "PENContact"><%= info.PENContact %></span></p>
 
                             <div class="edit-controls">
                                 <button class="edit-btn">Edit</button>
@@ -67,12 +67,12 @@
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
                                 <div class="subject-card" data-division = "<%= division %>" data-program = "<%= subject %>">
                                   <h3><%= subject %></h3>
-                                  <p><strong>Has Been Paid:</strong> <span class="editable" name = "Payment status" data-field="HasBeenPaid"><%= details.HasBeenPaid %></span></p>
-                                  <p><strong>Report Submitted:</strong> <span class="editable" name = "Report Status" data-field="ReportSubmitted"><%= details.ReportSubmitted %></span></p>
-                                  <p><strong>Notes:</strong> <span class="editable" name = "Notes" data-field="Notes"><%= details.Notes %></span></p>
+                                  <p><strong>Has Been Paid: </strong><span class = "editable" data-field = "HasBeenPaid"><%= details.HasBeenPaid %></span></p>
+                                  <p><strong>Report Submitted:</strong> <span class = "editable" name data-field = "ReportSubmitted"><%= details.ReportSubmitted %></span></p>
+                                  <p><strong>Notes: </strong><span class = "editable" data-field = "Notes"><%= details.Notes %></span></p>
                                   <% if (details.Payees) { %>
                                     <h3>Payees:</h3>
-                                    <div id="PayeeHolder">
+                                    <div class = "payee-holder">
                                         <% Object.entries(details.Payees).forEach(([name, amount]) => { %>
                                             <p class="editable-payee" data-name="<%= name %>">
                                             <span class = "payee-name"><%= name %></span> | 

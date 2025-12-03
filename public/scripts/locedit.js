@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // editable payees
-      const payeeHolder = card.querySelector("#PayeeHolder");
+      const payeeHolder = card.querySelector(".payee-holder");
       if (payeeHolder) {
         payeeHolder.querySelectorAll(".editable-payee").forEach(p => {
           const name = p.querySelector(".payee-name").textContent.trim();
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // payee events (adding and removing)
     card.addEventListener("click", (e) => {
-      const payeeHolder = card.querySelector("#PayeeHolder");
+      const payeeHolder = card.querySelector(".payee-holder");
 
       // adding
       if (e.target.classList.contains("add-payee")) {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       } else if (card.classList.contains("subject-card")) {
         updated.Payees = {};
-        const payeeHolder = card.querySelector("#PayeeHolder");
+        const payeeHolder = card.querySelector(".payee-holder");
 
         // save payees
         payeeHolder.querySelectorAll(".editable-payee").forEach(p => {
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
           // Update payees
-          const payeeHolder = card.querySelector("#PayeeHolder");
+          const payeeHolder = card.querySelector(".payee-holder");
           if (payeeHolder) {
             payeeHolder.innerHTML = "";
             Object.entries(updated.Payees || {}).forEach(([name, amount]) => {
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // restore payees
-      const payeeHolder = card.querySelector("#PayeeHolder");
+      const payeeHolder = card.querySelector(".payee-holder");
       if (payeeHolder) {
         payeeHolder.innerHTML = "";
 
@@ -238,11 +238,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const programSelect = document.getElementById("programs");
   const subjectCards = document.querySelectorAll(".subject-card");
-  const divSelect2 = document.getElementById("divs");
+  const divSelect = document.getElementById("divs");
 
   // when a division is selected, populate program list
-  divSelect2.addEventListener("change", () => {
-    const division = divSelect2.value;
+  divSelect.addEventListener("change", () => {
+    const division = divSelect.value;
 
     // clear old program options
     programSelect.innerHTML = `<option>All Programs</option>`;
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // filter subject-cards by program
     programSelect.addEventListener("change", () => {
         const chosenProgram = programSelect.value;
-        const chosenDivision = divSelect2.value;
+        const chosenDivision = divSelect.value;
 
         subjectCards.forEach(card => {
             const divMatch = (chosenDivision === "All Divisions" || card.dataset.division === chosenDivision);
