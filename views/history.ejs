@@ -33,7 +33,7 @@
                 <%  edits.forEach(edit => { %>
                 <tr>
                     <td><%= edit.ct %></td>
-                    <td><%= edit.ts %></td>
+                    <td><%= edit.ts.toLocaleString() %></td>
                 </tr>
                 <% }); %>
             </tbody> 

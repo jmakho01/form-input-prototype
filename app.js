@@ -127,6 +127,20 @@ app.get('/summary', async(req, res) => {
 app.get('/history', async (req, res) => {
     try {
         const [ edits ] = await pool.query('SELECT * FROM edits');
+
+        edits.forEach(edit => {
+            edit.formattedTimestamp = new 
+		    Date(edit.ts).toLocaleString('en-US', { 
+                weekday: 'long',
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+        });
+
         res.render(`history`, { edits });
     } catch (err) {
         console.error('Database error:', err);
