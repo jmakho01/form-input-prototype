@@ -41,6 +41,10 @@
             <select class = "dropdown" id = "programs">
                 <option selected>All Programs</option>
             </select>
+            <label>
+                <input type="checkbox" id = "show-under-review">
+                Show Programs Under Review
+            </label>
     <div class = "mainSection">
         <div class = "card-grid" id = "cardContainer">
             <% Object.entries(Data).forEach(([year, divisions]) => { %>
@@ -66,6 +70,11 @@
                             <div class="summary-section">
                               <% Object.entries(info.Summary).forEach(([subject, details]) => { %>
                                 <div class="subject-card" data-division = "<%= division %>" data-program = "<%= subject %>">
+                                  <label>
+                                    <input type="checkbox" class="toggle-under-review" data-field="UnderReview"
+                                     <% if(details.UnderReview) { %> checked <% } %>>
+                                    Mark as Under Review
+                                  </label>
                                   <h3><%= subject %></h3>
                                   <p><strong>Has Been Paid: </strong><span class = "editable" data-field = "HasBeenPaid"><%= details.HasBeenPaid %></span></p>
                                   <p><strong>Report Submitted:</strong> <span class = "editable" data-field = "ReportSubmitted"><%= details.ReportSubmitted %></span></p>

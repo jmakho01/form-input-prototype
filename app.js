@@ -78,7 +78,7 @@ app.post('/update', async (req, res) => {
          // Update program info including payees as JSON
         const sqlProgram = `
             UPDATE programs
-            SET HasBeenPaid = ?, ReportSubmitted = ?, Notes = ?, Payees = ?
+            SET HasBeenPaid = ?, ReportSubmitted = ?, Notes = ?, Payees = ?, UnderReview = ?
             WHERE ProgramName = ?;
         `;
 

@@ -123,6 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
+      updated.UnderReview = card.querySelector('.under-review-toggle').checked ? 1 : 0;
+
       // send to server
       try {
         const response = await fetch('/update', {
@@ -168,6 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (payeeControls) payeeControls.style.display = "none";
+          const toggleCheck = card.querySelector('.under-review-toggle');
+          if (toggleCheck) toggleCheck.checked = false;
+          card.dataset.underReview = "0";
           toggleButtons("save");
           alert("Database updated successfully!");
         } else {
@@ -238,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const programSelect = document.getElementById("programs");
   const subjectCards = document.querySelectorAll(".subject-card");
+  const reviewFilter = document.getElementById("show-under-review");
   const divSelect = document.getElementById("divs");
 
   // when a division is selected, populate program list
@@ -273,4 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.display = (divMatch && progMatch) ? "block" : "none";
         });
     });
+
+    reviewFilter.addEventListener("change", () => {
+    const onlyReview = reviewFilter.checked;
+
+    subjectCards.forEach(card => {
+      const isReview = card.dataset.underReview === "1";
+      card.style.display = (onlyReview && !isReview) ? "none" : "block";
+    });
+  });
 });
