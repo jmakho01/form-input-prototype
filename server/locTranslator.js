@@ -62,6 +62,7 @@ export async function translatingFromDB() {
         for (const p of divisionPrograms) {
             let payeesObj = {};
 
+            // Payees updating, catches to prevent errors down the line
             try {
                 payeesObj =
                     typeof p.Payees === "string" && p.Payees.trim() !== ""
@@ -70,7 +71,7 @@ export async function translatingFromDB() {
             } catch {
                 payeesObj = {};
             }
-
+            // Payee info held by the current data we're looping through
             result[year][d.DivisionName].Summary[p.ProgramName] = {
                 Payees: payeesObj,
                 HasBeenPaid: p.HasBeenPaid || "None",
