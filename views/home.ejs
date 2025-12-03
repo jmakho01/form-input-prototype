@@ -85,7 +85,8 @@
                                         <% Object.entries(details.Payees).forEach(([name, amount]) => { %>
                                             <p class="editable-payee" data-name="<%= name %>">
                                             <span class = "payee-name"><%= name %></span> | 
-                                            <span class = "payee-amount"><%= amount.toFixed(2) %></span>
+                                            <!-- This is where .toFix(2) was before, amount.toFix(2) -->
+                                            <span class = "payee-amount"><%= amount %></span>
                                             <button class = "remove-payee" style = "display: none;">X</button>
                                         </p>
                                         <% }) %>

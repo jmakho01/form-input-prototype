@@ -3,31 +3,12 @@ import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 
 //Pulling data from seperate js file to not bloat app.js
-import { JSONdataTemp } from './public/scripts/locdata.js';
+// import { JSONdataTemp } from './public/scripts/locdata.js';
+import { translatingFromDB } from './server/locTranslator.js';
 
 //Storing JSON object data into seperate array for summary page
-const data = JSONdataTemp["2024-2025"];
+// const data = JSONdataTemp["2024-2025"];
 const rows = [];
-/*
-for (const [divisionName, division] of Object.entries(data)) {
-  for (const [programName, summary] of Object.entries(division.Summary)) {
-    rows.push({
-      division: divisionName,
-      program: programName,
-      chair: division.DivisionChair,
-      dean: division.Dean,
-      locRep: division.LOCRep,
-      penContact: division.PENContact,
-      payees: Object.entries(summary.Payees)
-        .map(([n, v]) => `${n}: $${v}`)
-        .join(", "),
-      paid: summary.HasBeenPaid,
-      report: summary.ReportSubmitted,
-      notes: summary.Notes,
-    });
-  }
-}
-*/
 dotenv.config();
 
 // Create a database connection pool with multiple connections
@@ -49,8 +30,9 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.render(`home`,  { Data : JSONdataTemp });
+app.get('/', async (req, res) => {
+    const LOCresult = await translatingFromDB("2025-2026");
+    res.render('home', { Data: LOCresult });
 });
 
 app.post('/update', async (req, res) => {
