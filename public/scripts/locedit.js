@@ -121,9 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
             updated[input.name] = input.value;
           }
         });
-      }
 
-      updated.UnderReview = card.querySelector('.under-review-toggle').checked ? 1 : 0;
+        updated.UnderReview = card.querySelector(".toggle-under-review").checked;
+      }
 
       // send to server
       try {
@@ -170,9 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (payeeControls) payeeControls.style.display = "none";
-          const toggleCheck = card.querySelector('.under-review-toggle');
-          if (toggleCheck) toggleCheck.checked = false;
-          card.dataset.underReview = "0";
           toggleButtons("save");
           alert("Database updated successfully!");
         } else {
@@ -243,8 +240,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const programSelect = document.getElementById("programs");
   const subjectCards = document.querySelectorAll(".subject-card");
-  const reviewFilter = document.getElementById("show-under-review");
   const divSelect = document.getElementById("divs");
+
+  const showReview = document.getElementById("show-under-review");
+  const toggleFilter = document.querySelectorAll(".subject-card .toggle-under-review");
+
+  showReview.addEventListener('change', () => {
+    const showOnlyReview = showReview.checked;
+
+    subjectCards.forEach(card => {
+      const isUnderReview = card.querySelector(".toggle-under-review").checked;
+
+      // Only hide/show based on under review and existing division/program filters
+      const divMatch = divSelect.value === "All Divisions" || card.dataset.division === divSelect.value;
+      const progMatch = programSelect.value === "All Programs" || card.dataset.program === programSelect.value;
+
+      card.style.display = (divMatch && progMatch && (!showOnlyReview || isUnderReview)) ? "block" : "none";
+    });
+  });
 
   // when a division is selected, populate program list
   divSelect.addEventListener("change", () => {
@@ -279,13 +292,4 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.display = (divMatch && progMatch) ? "block" : "none";
         });
     });
-
-    reviewFilter.addEventListener("change", () => {
-    const onlyReview = reviewFilter.checked;
-
-    subjectCards.forEach(card => {
-      const isReview = card.dataset.underReview === "1";
-      card.style.display = (onlyReview && !isReview) ? "none" : "block";
-    });
-  });
 });
