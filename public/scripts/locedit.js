@@ -122,7 +122,11 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        updated.UnderReview = card.querySelector(".toggle-under-review").checked;
+        updated.UnderReview = false;
+
+        // Also update the checkbox in the UI immediately
+        const reviewCheckbox = card.querySelector(".toggle-under-review");
+        if (reviewCheckbox) reviewCheckbox.checked = false;
       }
 
       // send to server
