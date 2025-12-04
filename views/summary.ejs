@@ -28,9 +28,17 @@
             <option value="Yes">Programs Under Review</option>
             <option value="No">Programs Not Under Review</option>
         </select>
+        <select id="yearFilter">
+            <option value="">Sort by Year</option>
+            <option value="2024-2025">2024–2025</option>
+            <option value="2025-2026">2025–2026</option>
+            <option value="2026-2027">2026–2027</option>
+            <option value="2027-2028">2027–2028</option>
+        </select>
         <table id = "loc-table" class = "display">
             <thead>
                 <tr>
+                    <th>Year</th>
                     <th>Under Review</th>
                     <th>Division Name</th>
                     <th>Division Chair</th>
@@ -47,6 +55,7 @@
                 <tbody>
                     <% rows.forEach(row => { %>
                     <tr>
+                        <td><%= row.Year %></td>
                         <td><%= row.UnderReview ? "Yes" : "No" %></td>
                         <td><%= row.DivisionName %></td>
                         <td><%= row.DivisionChair %></td>
