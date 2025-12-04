@@ -64,13 +64,6 @@
             </table>
         </header>
     </main>
-    <script defer>
-        let table = new DataTable('#loc-table');
-        $("#reviewFilter").on("change", function() {
-            table.column(0)  // Under Review column index
-            .search(this.value)
-            .draw();
-        });
-    </script>
+    <script src = "/scripts/summary.js" defer></script>
 </body>
 </html>
