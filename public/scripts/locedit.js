@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const allCards = document.querySelectorAll(".division-card, .subject-card"); //selecting both cards
-  const inMemoryEdits = []; // stores any saved changes
 
   allCards.forEach(card => {
     const editBtn = card.querySelector(".edit-btn");
@@ -129,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (reviewCheckbox) reviewCheckbox.checked = false;
       }
 
-      // send to server
+      // send data to server
       try {
         const response = await fetch('/update', {
           method: 'POST',
@@ -242,30 +241,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const programSelect = document.getElementById("programs");
-  const subjectCards = document.querySelectorAll(".subject-card");
-  const divSelect = document.getElementById("divs");
-
   const showReview = document.getElementById("show-under-review");
-  const toggleFilter = document.querySelectorAll(".subject-card .toggle-under-review");
+  const programSelect = document.getElementById("programs");
+  const divSelect = document.getElementById("divs");
+  const subjectCards = document.querySelectorAll(".subject-card");
 
   showReview.addEventListener('change', () => {
     const showOnlyReview = showReview.checked;
 
-    subjectCards.forEach(card => {
-      const isUnderReview = card.querySelector(".toggle-under-review").checked;
+    if (showOnlyReview) {
+        // hide all divisions
+        document.querySelectorAll(".division-card").forEach(div => {
+            div.style.display = "none";
+        });
 
-      // Only hide/show based on under review and existing division/program filters
-      const divMatch = divSelect.value === "All Divisions" || card.dataset.division === divSelect.value;
-      const progMatch = programSelect.value === "All Programs" || card.dataset.program === programSelect.value;
+        // only show programs under review
+        subjectCards.forEach(card => {
+            const isUnderReview = card.querySelector(".toggle-under-review").checked;
+            card.style.display = isUnderReview ? "block" : "none";
+        });
 
-      card.style.display = (divMatch && progMatch && (!showOnlyReview || isUnderReview)) ? "block" : "none";
-    });
+        // disable dropdowns for divisions and programs when checkbox is checked
+        divSelect.disabled = true;
+        programSelect.disabled = true;
+        return;
+    }
+
+    // restore dropdown functionality when checkbox is unchecked
+    divSelect.disabled = false;
+    programSelect.disabled = false;
+
+    // restore normal filtering
+    divSelect.dispatchEvent(new Event("change"));
+    programSelect.dispatchEvent(new Event("change"));
   });
 
   // when a division is selected, populate program list
   divSelect.addEventListener("change", () => {
     const division = divSelect.value;
+
+    // if filtering by programs under review, don't repopulate program list
+    if (showReview.checked) {
+        programSelect.innerHTML = `<option>All Programs</option>`;
+        return;
+    }
 
     // clear old program options
     programSelect.innerHTML = `<option>All Programs</option>`;
