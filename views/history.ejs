@@ -20,6 +20,7 @@
         </div>
         </div>
         <main>
+        <h1>History Page</h1>
 <div class = "main-content">
         <table id = "edit-table" class ="display">
             <thead>
@@ -41,13 +42,6 @@
         </table>
         </div>
         </main>
-    <script defer>
-        let table = new DataTable('#edit-table', {
-        order: [[0, 'desc']],     // sorts by most recent timestamp
-        columnDefs: [
-            { type: 'datetime', targets: 0 }   // force column type to date to ensure no errors
-        ]
-        });
-    </script>
+    <script src = "/scripts/history.js" defer></script>
 </body>
 </html>
