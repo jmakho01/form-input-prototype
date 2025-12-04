@@ -2,13 +2,9 @@ import express from 'express';
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 
-//Pulling data from seperate js file to not bloat app.js
-// import { JSONdataTemp } from './public/scripts/locdata.js';
+// Translate data from database using locTranslator
 import { translatingFromDB } from './server/locTranslator.js';
 
-//Storing JSON object data into seperate array for summary page
-// const data = JSONdataTemp["2024-2025"];
-const rows = [];
 dotenv.config();
 
 // Create a database connection pool with multiple connections
@@ -69,6 +65,7 @@ app.post('/update', async (req, res) => {
             updates.ReportSubmitted || null,
             updates.Notes || null,
             JSON.stringify(updates.Payees || {}),
+            updates.UnderReview ?? null,
             identifier
         ]);
 
@@ -84,7 +81,7 @@ app.post('/update', async (req, res) => {
 
         await pool.execute(
             "INSERT INTO edits (ct, ts, ud) VALUES (?, ?, ?)", [erecord.ct, erecord.ts, erecord.ud]
-);
+        );
 
         res.json({ success: true });
 
