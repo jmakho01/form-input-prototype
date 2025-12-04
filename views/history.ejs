@@ -22,20 +22,20 @@
         </div>
         <main>
 <div class = "main-content">
-        <table id = "order-table" class ="display">
+        <table id = "edit-table" class ="display">
             <thead>
                 <tr>
+                    <th>Timestamp</th>
                     <th>Context</th>
                     <th>Change</th>
-                    <th>Timestamp</th>
                 </tr>
             </thead>
             <tbody>
                 <%  edits.forEach(edit => { %>
                 <tr>
+                    <td><%= edit.ts.toLocaleString() %></td>
                     <td><%= edit.ct %></td>
                     <td><%= edit.ud %></td>
-                    <td><%= edit.ts.toLocaleString() %></td>
                 </tr>
                 <% }); %>
             </tbody> 
@@ -43,7 +43,12 @@
         </div>
         </main>
     <script defer>
-        let table = new DataTable('#order-table');
+        let table = new DataTable('#edit-table', {
+        order: [[0, 'desc']],     // sorts by most recent timestamp
+        columnDefs: [
+            { type: 'datetime', targets: 0 }   // force column type to date to ensure no errors
+        ]
+        });
     </script>
 </body>
 </html>
